@@ -57,7 +57,7 @@ Si tienes dominio propio:
    - **Tipo A**: `76.76.21.21`
    - **CNAME**: `cname.vercel-dns.com`
 
-Si no tienes dominio, Vercel te da uno gratis: `tasareal.vercel.app`
+Si no tienes dominio, Vercel te da uno gratis: `tasareal-app.vercel.app` (puedes renombrarlo en Settings → Domains)
 
 ### Paso 4: Variables de Entorno (Futuro)
 

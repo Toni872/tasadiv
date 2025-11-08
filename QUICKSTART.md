@@ -37,7 +37,7 @@ git push -u origin main
 5. Deja todo por defecto y click "Deploy"
 6. Espera 30 segundos... ¡Listo! 🎉
 
-Tu sitio estará en: `https://tasareal.vercel.app`
+Tu sitio estará en: `https://tasareal-app.vercel.app`
 
 ---
 
@@ -83,13 +83,13 @@ Vercel auto-deployará en 30 segundos.
 
 1. Ve a [search.google.com/search-console](https://search.google.com/search-console)
 2. Click "Add property" → URL prefix
-3. Ingresa: `https://tasareal.vercel.app`
+3. Ingresa: `https://tasareal-app.vercel.app`
 4. Método de verificación: **HTML tag**
 5. Copia el meta tag
 6. Pégalo en el `<head>` de `index.html`
 7. Commit y push
 8. Vuelve a Search Console y click "Verify"
-9. En "Sitemaps", agrega: `https://tasareal.vercel.app/sitemap.xml`
+9. En "Sitemaps", agrega: `https://tasareal-app.vercel.app/sitemap.xml`
 
 ---
 
@@ -97,7 +97,7 @@ Vercel auto-deployará en 30 segundos.
 
 1. Ve a [google.com/adsense](https://www.google.com/adsense)
 2. Click "Get Started"
-3. Ingresa tu URL: `https://tasareal.vercel.app`
+3. Ingresa tu URL: `https://tasareal-app.vercel.app`
 4. Copia el código de verificación
 5. Pégalo en el `<head>` de `index.html`
 6. Commit y push
@@ -123,7 +123,7 @@ Comparte tu sitio en:
 ✅ Tabla de amortización
 ✅ 100% gratis
 
-Pruébala: https://tasareal.vercel.app
+Pruébala: https://tasareal-app.vercel.app
 
 #Finanzas #LATAM #TEA
 ```
@@ -144,7 +144,7 @@ Con TasaReal puedes:
 - Comparar ofertas de diferentes bancos
 - Ver tabla de amortización completa
 
-Link: https://tasareal.vercel.app
+Link: https://tasareal-app.vercel.app
 ```
 
 ---

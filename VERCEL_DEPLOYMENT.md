@@ -50,7 +50,7 @@ Install Command: (vacío)
 
 Verás una pantalla de éxito con:
 - 🎉 Confetti animado
-- 🔗 Tu URL: `https://tasareal.vercel.app`
+- 🔗 Tu URL: `https://tasareal-app.vercel.app`
 - 📸 Screenshot del sitio
 
 ---
@@ -58,7 +58,7 @@ Verás una pantalla de éxito con:
 ## 🌐 Tu Sitio Estará En:
 
 ```
-https://tasareal.vercel.app
+https://tasareal-app.vercel.app
 ```
 
 O si Vercel le asigna otro nombre:
@@ -105,7 +105,7 @@ Si quieres usar tu propio dominio:
 6. Espera 24-48 horas para propagación
 
 **Si NO tienes dominio:**
-- Usa el gratuito de Vercel: `tasareal.vercel.app`
+- Usa el gratuito de Vercel: `tasareal-app.vercel.app`
 - Funciona perfectamente para empezar
 
 ---
@@ -122,7 +122,7 @@ Si quieres usar tu propio dominio:
 6. Click en **"Create"**
 7. Acepta los términos
 8. Selecciona **"Web"**
-9. URL del sitio: `https://tasareal.vercel.app`
+9. URL del sitio: `https://tasareal-app.vercel.app`
 10. Nombre del stream: "TasaReal Web"
 11. Click en **"Create stream"**
 
@@ -175,7 +175,7 @@ Vercel auto-deployará en 30 segundos.
 
 1. Ve a: **https://www.google.com/adsense**
 2. Click en **"Get Started"**
-3. Ingresa tu URL: `https://tasareal.vercel.app`
+3. Ingresa tu URL: `https://tasareal-app.vercel.app`
 4. Selecciona tu país
 5. Acepta términos
 6. Copia el código de verificación
@@ -192,14 +192,14 @@ Vercel auto-deployará en 30 segundos.
 1. Ve a: **https://search.google.com/search-console**
 2. Click en **"Add property"**
 3. Selecciona **"URL prefix"**
-4. Ingresa: `https://tasareal.vercel.app`
+4. Ingresa: `https://tasareal-app.vercel.app`
 5. Método de verificación: **HTML tag**
 6. Copia el meta tag
 7. Pégalo en el `<head>` de `index.html`
 8. Commit y push
 9. Vuelve a Search Console y click en **"Verify"**
 10. Una vez verificado, ve a **"Sitemaps"**
-11. Agrega: `https://tasareal.vercel.app/sitemap.xml`
+11. Agrega: `https://tasareal-app.vercel.app/sitemap.xml`
 12. Click en **"Submit"**
 
 ---
@@ -215,7 +215,7 @@ Vercel auto-deployará en 30 segundos.
 ✅ Tabla de amortización
 ✅ 100% gratis y sin registro
 
-Pruébala: https://tasareal.vercel.app
+Pruébala: https://tasareal-app.vercel.app
 
 #Finanzas #LATAM #TEA #FinTech
 ```
@@ -237,7 +237,7 @@ Con TasaReal puedes:
 
 100% gratuito, sin registro, código abierto.
 
-Link: https://tasareal.vercel.app
+Link: https://tasareal-app.vercel.app
 GitHub: https://github.com/Toni872/tasareal
 
 #FinTech #Finanzas #Emprendimiento #OpenSource
@@ -259,7 +259,7 @@ Tech stack: Vanilla JS, Tailwind CSS, Vercel
 Features: Calculator, comparator, amortization table, CSV export
 Target: 278M+ people in LATAM
 
-Live: https://tasareal.vercel.app
+Live: https://tasareal-app.vercel.app
 GitHub: https://github.com/Toni872/tasareal
 
 Feedback welcome!
@@ -283,7 +283,7 @@ Características:
 - Exportar a CSV
 - 100% gratis, sin registro
 
-Link: https://tasareal.vercel.app
+Link: https://tasareal-app.vercel.app
 
 ¿Qué les parece? ¿Agregarían alguna función?
 ```
@@ -332,7 +332,7 @@ Tu proyecto está en producción y accesible para todo el mundo.
 ---
 
 **URL del Proyecto:** https://github.com/Toni872/tasareal  
-**URL del Sitio:** https://tasareal.vercel.app (después del deploy)  
+**URL del Sitio:** https://tasareal-app.vercel.app (después del deploy)  
 **Creado:** Noviembre 2025  
 
 🚀 **¡Tu viaje de $0 a $2,500 ha comenzado!**

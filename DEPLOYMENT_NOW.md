@@ -57,7 +57,7 @@ git push -u origin main
 
 ⏳ **Espera 30-60 segundos...**
 
-🎉 **¡LISTO!** Tu sitio estará en: `https://tasareal.vercel.app`
+🎉 **¡LISTO!** Tu sitio estará en: `https://tasareal-app.vercel.app`
 
 ### Paso 4: Configurar Dominio Personalizado (Opcional - 5 min)
 
@@ -70,7 +70,7 @@ Si tienes un dominio:
    - **CNAME**: `cname.vercel-dns.com`
 
 Si NO tienes dominio:
-- Usa el gratuito de Vercel: `tasareal.vercel.app`
+- Usa el gratuito de Vercel: `tasareal-app.vercel.app`
 - O compra uno en: Namecheap, GoDaddy (~$12/año)
 
 ---
