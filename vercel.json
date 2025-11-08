@@ -5,6 +5,17 @@
       "src": "index.html",
       "use": "@vercel/static"
     }
+  ],
+  "headers": [
+    {
+      "source": "/calculator.js",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript; charset=utf-8"
+        }
+      ]
+    }
   ]
 }
 
