@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tusitio.com/sitemap.xml
+
+# Bloquear bots de scraping
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+

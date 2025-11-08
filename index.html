@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora gratuita de Tasa Efectiva Anual (TEA) vs Tasa Nominal. Compara créditos, calcula cuotas reales y descarga tu tabla de amortización. Herramienta financiera para Latinoamérica.">
+    <meta name="keywords" content="calculadora tasa efectiva, TEA, TNA, tasa nominal, calculadora crédito, interés efectivo, comparar tasas, amortización">
+    <meta name="author" content="TasaReal">
+    <meta property="og:title" content="Calculadora TEA vs TNA - Tasa Efectiva y Nominal para Créditos">
+    <meta property="og:description" content="Calcula la tasa efectiva real de tu crédito. Compara ofertas bancarias y descubre cuánto pagarás realmente.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Calculadora TEA vs TNA - Tasa Efectiva y Nominal para Créditos | TasaReal</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none'><rect width='40' height='40' rx='8' fill='%23667eea'/><path d='M12 28V20C12 19.4477 12.4477 19 13 19H15C15.5523 19 16 19.4477 16 20V28' stroke='white' stroke-width='2' stroke-linecap='round'/><path d='M18 28V14C18 13.4477 18.4477 13 19 13H21C21.5523 13 22 13.4477 22 14V28' stroke='white' stroke-width='2' stroke-linecap='round'/><path d='M24 28V18C24 17.4477 24.4477 17 25 17H27C27.5523 17 28 17.4477 28 18V28' stroke='white' stroke-width='2' stroke-linecap='round'/><circle cx='20' cy='8' r='2' fill='%23FFD700'/></svg>">
+    
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Calculadora TEA vs TNA",
+      "description": "Calculadora de Tasa Efectiva Anual y Tasa Nominal para créditos en Latinoamérica",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        .input-focus:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-1px);
+            transition: all 0.2s ease;
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-count {
+            animation: countUp 0.8s ease-out;
+        }
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .btn-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        .btn-ripple:active::after {
+            width: 300px;
+            height: 300px;
+        }
+        .logo-icon {
+            transition: transform 0.3s ease;
+        }
+        .logo-icon:hover {
+            transform: rotate(5deg) scale(1.1);
+        }
+        .progress-bar {
+            transition: width 1s ease-out;
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .pulse-slow {
+            animation: pulse-slow 3s ease-in-out infinite;
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .loading-spinner {
+            border: 3px solid rgba(102, 126, 234, 0.1);
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Header -->
+    <header class="gradient-bg text-white py-6 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <svg class="w-10 h-10 logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="8" fill="white" fill-opacity="0.2"/>
+                        <path d="M12 28V20C12 19.4477 12.4477 19 13 19H15C15.5523 19 16 19.4477 16 20V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M18 28V14C18 13.4477 18.4477 13 19 13H21C21.5523 13 22 13.4477 22 14V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M24 28V18C24 17.4477 24.4477 17 25 17H27C27.5523 17 28 17.4477 28 18V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="20" cy="8" r="2" fill="#FFD700"/>
+                    </svg>
+                    <h1 class="text-2xl md:text-3xl font-bold">TasaReal</h1>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#calculadora" class="hover:text-purple-200 transition">Calculadora</a>
+                    <a href="#guia" class="hover:text-purple-200 transition">Guía</a>
+                    <a href="#comparador" class="hover:text-purple-200 transition">Comparador</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4">
+                Descubre la Tasa Real de tu Crédito
+            </h2>
+            <p class="text-lg md:text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
+                Calcula la Tasa Efectiva Anual (TEA) y compara ofertas bancarias. 
+                No más sorpresas en tus cuotas mensuales.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+                    <span class="font-semibold">✓ 100% Gratuito</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+                    <span class="font-semibold">✓ Sin Registro</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+                    <span class="font-semibold">✓ Resultados Instantáneos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AdSense Placeholder Top -->
+    <div class="container mx-auto px-4 my-8">
+        <div class="bg-gray-200 h-24 flex items-center justify-center text-gray-500 rounded-lg">
+            <!-- Google AdSense aquí (728x90 o responsive) -->
+            <span class="text-sm">Espacio publicitario</span>
+        </div>
+    </div>
+
+    <!-- Main Calculator Section -->
+    <main class="container mx-auto px-4 py-12" id="calculadora">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Calculator Form -->
+                <div class="bg-white rounded-2xl p-8 card-shadow hover-lift">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">
+                        <span class="inline-block mr-2">▸</span>Calculadora de Tasa Efectiva
+                    </h3>
+                    
+                    <form id="calculatorForm" class="space-y-6">
+                        <!-- Monto del Crédito -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Monto del Crédito
+                            </label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-3 text-gray-500 font-semibold">$</span>
+                                <input 
+                                    type="number" 
+                                    id="monto" 
+                                    value="10000"
+                                    min="100"
+                                    step="100"
+                                    class="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                                    required
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Tasa Nominal Anual -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Tasa Nominal Anual (TNA)
+                            </label>
+                            <div class="relative">
+                                <input 
+                                    type="number" 
+                                    id="tna" 
+                                    value="24"
+                                    min="0"
+                                    max="200"
+                                    step="0.1"
+                                    class="w-full pr-10 pl-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                                    required
+                                >
+                                <span class="absolute right-4 top-3 text-gray-500 font-semibold">%</span>
+                            </div>
+                        </div>
+
+                        <!-- Plazo -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Plazo del Crédito
+                            </label>
+                            <div class="grid grid-cols-2 gap-4">
+                                <input 
+                                    type="number" 
+                                    id="plazo" 
+                                    value="12"
+                                    min="1"
+                                    max="360"
+                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                                    required
+                                >
+                                <select 
+                                    id="plazoUnidad"
+                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                                >
+                                    <option value="meses">Meses</option>
+                                    <option value="años">Años</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Frecuencia de Capitalización -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Frecuencia de Capitalización
+                            </label>
+                            <select 
+                                id="frecuencia"
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                            >
+                                <option value="12">Mensual</option>
+                                <option value="4">Trimestral</option>
+                                <option value="2">Semestral</option>
+                                <option value="1">Anual</option>
+                            </select>
+                        </div>
+
+                        <!-- Sistema de Amortización -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                Sistema de Amortización
+                            </label>
+                            <select 
+                                id="sistema"
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                            >
+                                <option value="frances">Francés (Cuota Fija)</option>
+                                <option value="aleman">Alemán (Cuota Decreciente)</option>
+                            </select>
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <button 
+                            type="submit"
+                            class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold py-4 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition transform hover:scale-105 shadow-lg btn-ripple relative"
+                        >
+                            <span id="btnText">Calcular Tasa Efectiva →</span>
+                            <div id="btnLoader" class="hidden absolute inset-0 flex items-center justify-center">
+                                <div class="loading-spinner"></div>
+                            </div>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="bg-white rounded-2xl p-8 card-shadow hover-lift" id="resultsPanel">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">
+                        <span class="inline-block mr-2">▸</span>Resultados
+                    </h3>
+                    
+                    <div id="results" class="space-y-6">
+                        <div class="text-center text-gray-400 py-12">
+                            <svg class="w-24 h-24 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                            </svg>
+                            <p class="text-lg">Completa el formulario para ver los resultados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Section -->
+            <div class="mt-12 bg-white rounded-2xl p-8 card-shadow hover-lift animate-fade-in" id="comparador">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-800">
+                        <span class="inline-block mr-2">▸</span>Comparador de Ofertas
+                    </h3>
+                    <button 
+                        id="addComparison"
+                        class="bg-purple-100 text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-200 transition font-semibold"
+                    >
+                        + Agregar Oferta
+                    </button>
+                </div>
+                <div id="comparisonContainer" class="text-center text-gray-400 py-8">
+                    <p>Haz clic en "Agregar Oferta" para comparar diferentes créditos</p>
+                </div>
+            </div>
+
+            <!-- Amortization Table -->
+            <div class="mt-12 bg-white rounded-2xl p-8 card-shadow hover-lift hidden" id="amortizationSection">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-800">
+                        <span class="inline-block mr-2">▸</span>Tabla de Amortización
+                    </h3>
+                    <button 
+                        id="downloadTable"
+                        class="bg-green-100 text-green-700 px-4 py-2 rounded-lg hover:bg-green-200 transition font-semibold"
+                    >
+                        ↓ Descargar CSV
+                    </button>
+                </div>
+                <div id="amortizationTable" class="overflow-x-auto"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Educational Content -->
+    <section class="bg-white py-16" id="guia">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+                ¿Qué es la Tasa Efectiva Anual (TEA)?
+            </h2>
+            
+            <div class="prose prose-lg max-w-none">
+                <div class="bg-purple-50 border-l-4 border-purple-600 p-6 mb-8 rounded-r-lg">
+                    <p class="text-gray-700 leading-relaxed">
+                        La <strong>Tasa Efectiva Anual (TEA)</strong> es el costo real de un crédito, considerando la capitalización de intereses. 
+                        A diferencia de la <strong>Tasa Nominal Anual (TNA)</strong>, la TEA refleja el verdadero impacto de los intereses compuestos.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-blue-50 p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-blue-900 mb-3">Tasa Nominal (TNA)</h3>
+                        <ul class="text-gray-700 space-y-2">
+                            <li>✓ Tasa publicitada por bancos</li>
+                            <li>✓ No considera capitalización</li>
+                            <li>✓ Siempre menor que la TEA</li>
+                            <li>✓ Útil para comparación inicial</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-green-900 mb-3">Tasa Efectiva (TEA)</h3>
+                        <ul class="text-gray-700 space-y-2">
+                            <li>✓ Costo real del crédito</li>
+                            <li>✓ Incluye capitalización</li>
+                            <li>✓ Permite comparar ofertas</li>
+                            <li>✓ Base para calcular cuotas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Fórmula de Conversión</h3>
+                <div class="bg-gray-100 p-6 rounded-xl mb-8 text-center">
+                    <code class="text-lg font-mono">
+                        TEA = (1 + TNA/n)^n - 1
+                    </code>
+                    <p class="text-sm text-gray-600 mt-2">Donde <strong>n</strong> es la frecuencia de capitalización anual</p>
+                </div>
+
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Ejemplo Práctico</h3>
+                <div class="bg-yellow-50 border border-yellow-200 p-6 rounded-xl">
+                    <p class="text-gray-700 mb-4">
+                        <strong>Crédito de $10,000 a 24% TNA con capitalización mensual:</strong>
+                    </p>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>• TNA: 24% (lo que ves en publicidad)</li>
+                        <li>• TEA: 26.82% (lo que realmente pagas)</li>
+                        <li>• Diferencia: 2.82% adicional por capitalización</li>
+                        <li>• En un año: $282 más de intereses</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AdSense Placeholder Bottom -->
+    <div class="container mx-auto px-4 my-8">
+        <div class="bg-gray-200 h-24 flex items-center justify-center text-gray-500 rounded-lg">
+            <!-- Google AdSense aquí (728x90 o responsive) -->
+            <span class="text-sm">Espacio publicitario</span>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="bg-gray-50 py-16">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+                Preguntas Frecuentes
+            </h2>
+            
+            <div class="space-y-4">
+                <details class="bg-white p-6 rounded-xl card-shadow">
+                    <summary class="font-bold text-lg cursor-pointer text-gray-800">
+                        ¿Por qué la TEA es mayor que la TNA?
+                    </summary>
+                    <p class="mt-4 text-gray-600">
+                        La TEA incluye el efecto de la capitalización de intereses. Cuando los intereses se capitalizan (mensual, trimestral, etc.), 
+                        los intereses generan más intereses, aumentando el costo real del crédito.
+                    </p>
+                </details>
+
+                <details class="bg-white p-6 rounded-xl card-shadow">
+                    <summary class="font-bold text-lg cursor-pointer text-gray-800">
+                        ¿Qué sistema de amortización me conviene?
+                    </summary>
+                    <p class="mt-4 text-gray-600">
+                        El <strong>sistema francés</strong> tiene cuotas fijas (más fácil de presupuestar), pero pagas más intereses al inicio. 
+                        El <strong>sistema alemán</strong> tiene cuotas decrecientes, pagas menos intereses totales pero las primeras cuotas son más altas.
+                    </p>
+                </details>
+
+                <details class="bg-white p-6 rounded-xl card-shadow">
+                    <summary class="font-bold text-lg cursor-pointer text-gray-800">
+                        ¿Cómo comparo ofertas de diferentes bancos?
+                    </summary>
+                    <p class="mt-4 text-gray-600">
+                        Siempre compara la <strong>TEA</strong>, no la TNA. Dos créditos con la misma TNA pueden tener TEA diferentes según 
+                        la frecuencia de capitalización. Usa nuestra calculadora para convertir todas las ofertas a TEA.
+                    </p>
+                </details>
+
+                <details class="bg-white p-6 rounded-xl card-shadow">
+                    <summary class="font-bold text-lg cursor-pointer text-gray-800">
+                        ¿Esta calculadora incluye seguros y comisiones?
+                    </summary>
+                    <p class="mt-4 text-gray-600">
+                        Esta versión calcula solo la TEA basada en la tasa de interés. Para el <strong>Costo Financiero Total (CFT)</strong>, 
+                        debes sumar seguros, comisiones de apertura, gastos administrativos y otros cargos que te informe el banco.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <svg class="w-8 h-8" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="40" height="40" rx="8" fill="white" fill-opacity="0.1"/>
+                            <path d="M12 28V20C12 19.4477 12.4477 19 13 19H15C15.5523 19 16 19.4477 16 20V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M18 28V14C18 13.4477 18.4477 13 19 13H21C21.5523 13 22 13.4477 22 14V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M24 28V18C24 17.4477 24.4477 17 25 17H27C27.5523 17 28 17.4477 28 18V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="20" cy="8" r="2" fill="#FFD700"/>
+                        </svg>
+                        <h3 class="text-xl font-bold">TasaReal</h3>
+                    </div>
+                    <p class="text-gray-400">
+                        Herramienta gratuita para calcular la tasa efectiva de créditos y préstamos en Latinoamérica.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Enlaces Útiles</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#calculadora" class="hover:text-white transition">Calculadora</a></li>
+                        <li><a href="#guia" class="hover:text-white transition">Guía TEA vs TNA</a></li>
+                        <li><a href="#comparador" class="hover:text-white transition">Comparador</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Países</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>• México</li>
+                        <li>• Argentina</li>
+                        <li>• Colombia</li>
+                        <li>• Perú</li>
+                        <li>• Chile</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 TasaReal. Todos los derechos reservados. | Herramienta educativa - Consulta con un asesor financiero.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="calculator.js"></script>
+    
+    <!-- Google Analytics Placeholder -->
+    <script>
+        // Google Analytics se agregará aquí
+        // gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</body>
+</html>
+
