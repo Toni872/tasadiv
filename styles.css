@@ -1,14 +1,14 @@
-/* Reset y variables - Exactamente como tasareal.vercel.app */
+/* Reset y variables - Nuevo patrón de colores: amarillo-verde, gris tenue, blanco */
 :root {
-    --primary-color: #007bff;
-    --primary-hover: #0056b3;
-    --text-color: #333333;
-    --text-muted: #6c757d;
+    --primary-color: #BAFF39;
+    --primary-hover: #A8E635;
+    --text-color: #6E6E6E;
+    --text-muted: #999999;
     --bg-color: #ffffff;
-    --bg-light: #f8f9fa;
-    --border-color: #dee2e6;
-    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --bg-light: #FAFAFA;
+    --border-color: #E0E0E0;
+    --shadow: 0 2px 4px rgba(186, 255, 57, 0.1);
+    --shadow-lg: 0 4px 8px rgba(186, 255, 57, 0.15);
     --radius: 8px;
     --radius-lg: 12px;
 }
