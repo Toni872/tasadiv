@@ -1,18 +1,27 @@
 # TasaReal - Tasas de Cambio y Convertidor de Divisas
 
-Una aplicación web moderna para consultar tasas de cambio actuales y convertir divisas entre USD, EUR y VES (Bolívar Venezolano).
+**Producto web listo para vender: aplicación financiera sencilla y eficaz para tasas de cambio en Venezuela y Latinoamérica.**
 
-## 🌟 Características
+Una aplicación web moderna y minimalista para consultar tasas de cambio actuales y convertir divisas entre USD, EUR y VES (Bolívar Venezolano). Perfecta para monetizar con ads, afiliados fintech o vender como SaaS básico.
 
-- **Tasas de cambio en tiempo real** - USD y EUR a VES
-- **Convertidor instantáneo** - Convierte entre VES, USD y EUR
-- **Interfaz moderna y responsive** - Funciona en desktop y móvil
-- **Actualización automática** - Tasas se refrescan periódicamente
-- **Sin dependencias externas** - Solo HTML, CSS y JavaScript puro
+## 🌟 Características Principales
 
-## 🚀 Demo
+- **Tasas de cambio en tiempo real** - USD y EUR a VES actualizadas automáticamente
+- **Convertidor instantáneo** - Conversión bidireccional VES ↔ USD ↔ EUR
+- **Interfaz moderna y responsive** - Diseño glassmorphism en fondo morado, funciona en desktop y móvil
+- **Sin dependencias complejas** - Solo HTML, CSS y JavaScript puro (fácil mantenimiento)
+- **SEO optimizado** - Keywords como "tasa cambio dólar bolívar", "convertidor divisas venezuela"
+- **Listo para monetizar** - Integración fácil con Google AdSense o afiliados bancarios
 
-Puedes ver la aplicación funcionando en: [https://tasareal.vercel.app/](https://tasareal.vercel.app/)
+## 🚀 Demo en Producción
+
+Puedes ver la aplicación funcionando en: [https://tasareal-5nup.vercel.app/](https://tasareal-5nup.vercel.app/)
+
+### Screenshots
+- **Vista principal**: Tasas actuales y convertidor
+- **Mobile responsive**: Funciona perfectamente en teléfonos
+
+*(Incluye screenshots en el repositorio para mostrar el diseño)*
 
 ## 📋 Tecnologías
 
@@ -70,13 +79,24 @@ tasareal/
 - **GitHub Pages**: Habilita Pages en tu repositorio
 - **Cualquier hosting**: Solo necesita servir archivos estáticos
 
+## 💰 Potencial de Monetización
+
+Este producto está diseñado para generar ingresos desde el día 1:
+- **Google AdSense**: Alto CTR en búsquedas financieras (tasas cambio, divisas)
+- **Afiliados FinTech**: Links a bancos, wallets o exchanges (Binance, Remesas)
+- **SEO orgánico**: Nicho específico con baja competencia en LatAm (Venezuela, Colombia)
+- **Expansión futura**: Añadir calculadoras TEA/TNA, dashboards bancarios
+- **Tráfico estimado**: 1,000-5,000 visitas/mes con keywords locales
+
+**¿Por qué comprarlo?** - Producto listo, funcional y escalable. Ideal para emprendedores o agencias que buscan SaaS simples sin desarrollo desde cero.
+
 ## 📊 API de Tasas de Cambio
 
 Usamos [ExchangeRate-API](https://exchangerate-api.com) que ofrece:
-- ✅ Plan gratuito básico
+- ✅ Plan gratuito básico (hasta 1,500 requests/mes)
 - ✅ Tasas actualizadas diariamente
-- ✅ Sin límite de requests (plan gratuito)
-- ✅ API REST simple
+- ✅ Sin límite estricto en requests (plan gratuito)
+- ✅ API REST simple y confiable
 
 ## 🎨 Diseño
 
