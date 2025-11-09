@@ -40,11 +40,11 @@ header {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-lg);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    background: transparent;
+    border-radius: 0;
+    backdrop-filter: none;
+    border: none;
 }
 
 .logo {
@@ -63,7 +63,7 @@ header {
 }
 
 .nav-links a {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
@@ -82,14 +82,14 @@ main {
 section h2 {
     font-size: 24px;
     font-weight: 600;
-    color: var(--text-color);
+    color: rgba(255, 255, 255, 0.95);
     margin-bottom: 8px;
     text-align: center;
 }
 
 .subtitle {
     text-align: center;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 20px;
     font-size: 14px;
 }
@@ -107,13 +107,12 @@ section h2 {
 }
 
 .rate-card {
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    border: none;
     border-radius: var(--radius);
     padding: 30px 20px;
     text-align: center;
-    box-shadow: var(--shadow-lg);
-    backdrop-filter: blur(10px);
+    box-shadow: none;
 }
 
 .currency-code {
@@ -125,7 +124,7 @@ section h2 {
 
 .currency-name {
     font-size: 14px;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 15px;
 }
 
@@ -148,17 +147,17 @@ section h2 {
 
 .source {
     font-size: 12px;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.6);
     font-style: italic;
 }
 
 .update-notice {
     text-align: center;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 14px;
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Convertidor - Exactamente como tasareal.vercel.app */
@@ -174,19 +173,18 @@ section h2 {
 }
 
 .converter-card {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: transparent;
+    border: none;
     border-radius: var(--radius);
     padding: 25px 20px;
     text-align: center;
-    box-shadow: var(--shadow-lg);
-    backdrop-filter: blur(8px);
+    box-shadow: none;
 }
 
 .converter-card h3 {
     font-size: 16px;
     font-weight: 600;
-    color: var(--text-color);
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 15px;
 }
 
@@ -200,12 +198,13 @@ section h2 {
 .input-group input {
     flex: 1;
     padding: 10px 12px;
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: var(--radius);
     font-size: 16px;
     font-weight: 500;
     text-align: center;
-    background: var(--bg-color);
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
     transition: border-color 0.3s ease;
 }
 
@@ -259,13 +258,13 @@ section h2 {
 footer {
     text-align: center;
     margin-top: 40px;
-    padding: 20px;
-    color: rgba(255, 255, 255, 0.8);
+    padding: 20px 0;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 14px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--radius-lg);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    border-radius: 0;
+    backdrop-filter: none;
+    border: none;
 }
 
 /* Loading animation */
