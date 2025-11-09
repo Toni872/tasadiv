@@ -222,36 +222,44 @@ section h2 {
 
 .converter-actions {
     display: flex;
-    gap: 15px;
-    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
     margin-top: 20px;
+    width: 100%;
 }
 
 .convert-btn, .clear-btn {
-    padding: 10px 20px;
+    width: 100%;
+    max-width: 200px;
+    padding: 12px 24px;
     border-radius: var(--radius);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 1px solid var(--primary-color);
-    background: var(--primary-color);
-    color: white;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .convert-btn:hover {
-    background: var(--primary-hover);
+    background: var(--primary-color);
+    color: #6E6E6E;
+    transform: translateY(-1px);
 }
 
 .clear-btn {
-    background: var(--bg-color);
-    color: var(--primary-color);
-    border-color: var(--primary-color);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .clear-btn:hover {
-    background: var(--primary-color);
-    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 1);
 }
 
 /* Footer - Exactamente como tasareal.vercel.app */
@@ -283,25 +291,48 @@ footer {
 }
 
 /* Responsive */
+@media (min-width: 768px) {
+    .converter-actions {
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .convert-btn, .clear-btn {
+        width: auto;
+        min-width: 120px;
+    }
+}
+
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 2.5rem;
+    .container {
+        padding: 16px;
     }
 
     .rates-grid, .converter-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     section {
-        padding: 24px;
+        margin-bottom: 32px;
+    }
+
+    .converter-card {
+        padding: 20px 16px;
+    }
+
+    .rate-card {
+        padding: 24px 16px;
     }
 
     .converter-actions {
-        flex-direction: column;
+        margin-top: 16px;
     }
 
     .convert-btn, .clear-btn {
-        width: 100%;
+        font-size: 14px;
+        padding: 14px 20px;
     }
 }
 
