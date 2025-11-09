@@ -14,12 +14,12 @@
     <title>Calculadora TEA vs TNA - Tasa Efectiva y Nominal para Créditos | TasaReal</title>
 
     <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#667eea">
+    <meta name="theme-color" content="#1e293b">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="TasaReal">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="msapplication-TileColor" content="#667eea">
+    <meta name="msapplication-TileColor" content="#1e293b">
 
     <!-- PWA Links -->
     <link rel="manifest" href="/manifest.json">
@@ -54,111 +54,201 @@
     </script>
     
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --bg-accent: #475569;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --secondary: #6366f1;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --border: #475569;
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .card-shadow {
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
-        .input-focus:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-            transform: translateY(-1px);
+
+        * {
             transition: all 0.2s ease;
         }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        .dark-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .dark-card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .dark-card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        .input-dark {
+            background: var(--bg-accent);
+            border: 2px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .input-dark:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--bg-accent);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card);
+            border-color: var(--primary);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         .animate-fade-in {
             animation: fadeIn 0.6s ease-out;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-slide-in {
-            animation: slideIn 0.5s ease-out;
-        }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        .animate-count {
-            animation: countUp 0.8s ease-out;
-        }
-        @keyframes countUp {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        .btn-ripple {
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-ripple::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-        .btn-ripple:active::after {
-            width: 300px;
-            height: 300px;
-        }
-        .logo-icon {
-            transition: transform 0.3s ease;
-        }
-        .logo-icon:hover {
-            transform: rotate(5deg) scale(1.1);
-        }
-        .progress-bar {
-            transition: width 1s ease-out;
-        }
-        .shimmer {
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shimmer 2s infinite;
-        }
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        .pulse-slow {
-            animation: pulse-slow 3s ease-in-out infinite;
-        }
-        @keyframes pulse-slow {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        .loading-spinner {
-            border: 3px solid rgba(102, 126, 234, 0.1);
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .hover-lift {
-            transition: all 0.3s ease;
-        }
-        .hover-lift:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+
+        .animate-slide-up {
+            animation: slideUp 0.5s ease-out;
         }
 
-        /* Chart.js custom styles */
+        .animate-scale-in {
+            animation: scaleIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .loading-dots {
+            display: inline-block;
+        }
+
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+
         .chart-container {
             position: relative;
-            height: 300px;
+            height: 350px;
             width: 100%;
+        }
+
+        .tab-active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
         }
     </style>
 
@@ -168,50 +258,91 @@
 <body class="bg-gray-50">
     
     <!-- Header -->
-    <header class="gradient-bg text-white py-6 shadow-lg">
+    <header class="glass-effect py-4 sticky top-0 z-50">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <svg class="w-10 h-10 logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="40" height="40" rx="8" fill="white" fill-opacity="0.2"/>
-                        <path d="M12 28V20C12 19.4477 12.4477 19 13 19H15C15.5523 19 16 19.4477 16 20V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M18 28V14C18 13.4477 18.4477 13 19 13H21C21.5523 13 22 13.4477 22 14V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M24 28V18C24 17.4477 24.4477 17 25 17H27C27.5523 17 28 17.4477 28 18V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                        <circle cx="20" cy="8" r="2" fill="#FFD700"/>
-                    </svg>
-                    <h1 class="text-2xl md:text-3xl font-bold">TasaReal</h1>
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center">
+                        <svg class="w-7 h-7" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 28V20C12 19.4477 12.4477 19 13 19H15C15.5523 19 16 19.4477 16 20V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M18 28V14C18 13.4477 18.4477 13 19 13H21C21.5523 13 22 13.4477 22 14V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M24 28V18C24 17.4477 24.4477 17 25 17H27C27.5523 17 28 17.4477 28 18V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="20" cy="8" r="2" fill="white"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gradient">TasaReal</h1>
+                        <p class="text-sm text-secondary">Calculadora Financiera Profesional</p>
+                    </div>
                 </div>
-                <nav class="hidden md:flex space-x-6">
-                    <a href="#calculadora" class="hover:text-purple-200 transition">Calculadora</a>
-                    <a href="#guia" class="hover:text-purple-200 transition">Guía</a>
-                    <a href="#comparador" class="hover:text-purple-200 transition">Comparador</a>
+
+                <!-- Navigation Tabs -->
+                <nav class="hidden md:flex space-x-2">
+                    <button onclick="scrollToSection('calculadora')" class="btn-secondary text-sm">Calculadora</button>
+                    <button onclick="scrollToSection('comparador')" class="btn-secondary text-sm">Comparador</button>
+                    <button onclick="scrollToSection('refinancing')" class="btn-secondary text-sm">Refinanciamiento</button>
+                    <button onclick="scrollToSection('guia')" class="btn-secondary text-sm">Guía</button>
                 </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden btn-secondary p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 border-t border-border pt-4">
+                <div class="flex flex-col space-y-2">
+                    <button onclick="scrollToSection('calculadora')" class="btn-secondary text-left">Calculadora</button>
+                    <button onclick="scrollToSection('comparador')" class="btn-secondary text-left">Comparador</button>
+                    <button onclick="scrollToSection('refinancing')" class="btn-secondary text-left">Refinanciamiento</button>
+                    <button onclick="scrollToSection('guia')" class="btn-secondary text-left">Guía</button>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="gradient-bg text-white py-16">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-5xl font-bold mb-4">
-                Descubre la Tasa Real de tu Crédito
-            </h2>
-            <p class="text-lg md:text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
-                Calcula la Tasa Efectiva Anual (TEA) y compara ofertas bancarias. 
-                No más sorpresas en tus cuotas mensuales.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <div class="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                    <span class="font-semibold">✓ 100% Gratuito</span>
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/10 to-transparent"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="animate-fade-in">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gradient">
+                    Finanzas Claras,<br>
+                    <span class="text-primary">Decisiones Inteligentes</span>
+                </h2>
+                <p class="text-xl md:text-2xl text-secondary mb-12 max-w-3xl mx-auto leading-relaxed">
+                    Calcula la Tasa Efectiva Anual (TEA), compara ofertas bancarias y descubre
+                    el costo real de tus créditos en Latinoamérica.
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-6 mb-12">
+                    <div class="metric-card px-8 py-4 rounded-2xl text-center animate-slide-up" style="animation-delay: 0.1s">
+                        <div class="text-3xl font-bold text-primary mb-1">100%</div>
+                        <div class="text-sm text-secondary font-medium">Gratuito</div>
+                    </div>
+                    <div class="metric-card px-8 py-4 rounded-2xl text-center animate-slide-up" style="animation-delay: 0.2s">
+                        <div class="text-3xl font-bold text-success mb-1">16</div>
+                        <div class="text-sm text-secondary font-medium">Países LATAM</div>
+                    </div>
+                    <div class="metric-card px-8 py-4 rounded-2xl text-center animate-slide-up" style="animation-delay: 0.3s">
+                        <div class="text-3xl font-bold text-warning mb-1">∞</div>
+                        <div class="text-sm text-secondary font-medium">Cálculos</div>
+                    </div>
                 </div>
-                <div class="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                    <span class="font-semibold">✓ Sin Registro</span>
-                </div>
-                <div class="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-                    <span class="font-semibold">✓ Resultados Instantáneos</span>
-                </div>
+
+                <button onclick="scrollToSection('calculadora')" class="btn-primary text-lg px-8 py-4 rounded-xl animate-scale-in">
+                    🚀 Comenzar Ahora
+                </button>
             </div>
         </div>
+
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-32 h-32 bg-secondary/10 rounded-full animate-pulse" style="animation-delay: 1s"></div>
+        <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-success/10 rounded-full animate-pulse" style="animation-delay: 2s"></div>
     </section>
 
     <!-- AdSense Placeholder Top -->
@@ -228,202 +359,217 @@
             <div class="grid md:grid-cols-2 gap-8">
                 
                 <!-- Calculator Form -->
-                <div class="bg-white rounded-2xl p-8 card-shadow hover-lift">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-6">
-                        <span class="inline-block mr-2">▸</span>Calculadora de Tasa Efectiva
-                    </h3>
-                    
-                    <form id="calculatorForm" class="space-y-6">
-                        <!-- Monto del Crédito -->
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                Monto del Crédito
-                            </label>
-                            <div class="relative">
-                                <span class="absolute left-4 top-3 text-gray-500 font-semibold">$</span>
-                                <input 
-                                    type="number" 
-                                    id="monto" 
-                                    value="10000"
-                                    min="100"
-                                    step="100"
-                                    class="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
-                                    required
-                                >
+                <div class="dark-card dark-card-hover animate-fade-in">
+                    <div class="p-8">
+                        <div class="flex items-center mb-8">
+                            <div class="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-1">Calculadora TEA</h3>
+                                <p class="text-secondary text-sm">Descubre el costo real de tu crédito</p>
                             </div>
                         </div>
 
-                        <!-- Tasa Nominal Anual -->
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                Tasa Nominal Anual (TNA)
-                            </label>
-                            <div class="relative">
-                                <input 
-                                    type="number" 
-                                    id="tna" 
-                                    value="24"
-                                    min="0"
-                                    max="200"
-                                    step="0.1"
-                                    class="w-full pr-10 pl-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
-                                    required
-                                >
-                                <span class="absolute right-4 top-3 text-gray-500 font-semibold">%</span>
+                        <form id="calculatorForm" class="space-y-6">
+                            <!-- Monto del Crédito -->
+                            <div class="animate-slide-up" style="animation-delay: 0.1s">
+                                <label class="block text-sm font-semibold mb-3">
+                                    💰 Monto del Crédito
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-secondary font-semibold">$</span>
+                                    <input
+                                        type="number"
+                                        id="monto"
+                                        value="10000"
+                                        min="100"
+                                        step="100"
+                                        class="input-dark w-full pl-8 pr-4 py-4 rounded-xl text-lg font-semibold"
+                                        required
+                                    >
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Plazo -->
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                Plazo del Crédito
-                            </label>
-                            <div class="grid grid-cols-2 gap-4">
-                                <input 
-                                    type="number" 
-                                    id="plazo" 
-                                    value="12"
-                                    min="1"
-                                    max="360"
-                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
-                                    required
-                                >
-                                <select 
-                                    id="plazoUnidad"
-                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
-                                >
-                                    <option value="meses">Meses</option>
-                                    <option value="años">Años</option>
-                                </select>
+                            <!-- Tasa Nominal Anual -->
+                            <div class="animate-slide-up" style="animation-delay: 0.2s">
+                                <label class="block text-sm font-semibold mb-3">
+                                    📈 Tasa Nominal Anual (TNA)
+                                </label>
+                                <div class="relative">
+                                    <input
+                                        type="number"
+                                        id="tna"
+                                        value="24"
+                                        min="0"
+                                        max="200"
+                                        step="0.1"
+                                        class="input-dark w-full pr-12 pl-4 py-4 rounded-xl text-lg font-semibold"
+                                        required
+                                    >
+                                    <span class="absolute right-4 top-1/2 transform -translate-y-1/2 text-secondary font-semibold">%</span>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Frecuencia de Capitalización -->
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                Frecuencia de Capitalización
-                            </label>
-                            <select 
-                                id="frecuencia"
-                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                            <!-- Plazo -->
+                            <div class="animate-slide-up" style="animation-delay: 0.3s">
+                                <label class="block text-sm font-semibold mb-3">
+                                    ⏰ Plazo del Crédito
+                                </label>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <input
+                                        type="number"
+                                        id="plazo"
+                                        value="12"
+                                        min="1"
+                                        max="360"
+                                        class="input-dark py-4 rounded-xl text-lg font-semibold"
+                                        required
+                                    >
+                                    <select
+                                        id="plazoUnidad"
+                                        class="input-dark py-4 rounded-xl text-lg font-semibold"
+                                    >
+                                        <option value="meses">Meses</option>
+                                        <option value="años">Años</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Configuración Avanzada -->
+                            <div class="space-y-4 animate-slide-up" style="animation-delay: 0.4s">
+                                <label class="block text-sm font-semibold">
+                                    ⚙️ Configuración Avanzada
+                                </label>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <!-- Frecuencia de Capitalización -->
+                                    <div>
+                                        <label class="block text-xs text-secondary mb-2">Frecuencia Capitalización</label>
+                                        <select
+                                            id="frecuencia"
+                                            class="input-dark py-3 rounded-lg"
+                                        >
+                                            <option value="12">Mensual</option>
+                                            <option value="4">Trimestral</option>
+                                            <option value="2">Semestral</option>
+                                            <option value="1">Anual</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Sistema de Amortización -->
+                                    <div>
+                                        <label class="block text-xs text-secondary mb-2">Sistema Amortización</label>
+                                        <select
+                                            id="sistema"
+                                            class="input-dark py-3 rounded-lg"
+                                        >
+                                            <option value="frances">Francés (Cuota Fija)</option>
+                                            <option value="aleman">Alemán (Cuota Decreciente)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Costos Adicionales para CFT -->
+                            <div class="glass-effect p-6 rounded-xl animate-slide-up" style="animation-delay: 0.5s">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-8 h-8 rounded-lg bg-secondary/20 flex items-center justify-center mr-3">
+                                        <span class="text-secondary">💰</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold">Costos Adicionales</h4>
+                                        <p class="text-xs text-secondary">Para cálculo del CFT (Costo Financiero Total)</p>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <!-- Comisión de Apertura -->
+                                    <div>
+                                        <label class="block text-xs text-secondary mb-2">Comisión de Apertura</label>
+                                        <div class="relative">
+                                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-secondary">$</span>
+                                            <input
+                                                type="number"
+                                                id="comisionApertura"
+                                                value="0"
+                                                min="0"
+                                                step="10"
+                                                class="input-dark w-full pl-8 pr-3 py-3 rounded-lg"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <!-- Seguro de Vida -->
+                                    <div>
+                                        <label class="block text-xs text-secondary mb-2">Seguro Vida (anual)</label>
+                                        <div class="relative">
+                                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-secondary">$</span>
+                                            <input
+                                                type="number"
+                                                id="seguroVida"
+                                                value="0"
+                                                min="0"
+                                                step="10"
+                                                class="input-dark w-full pl-8 pr-3 py-3 rounded-lg"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <!-- Seguro de Desempleo -->
+                                    <div>
+                                        <label class="block text-xs text-secondary mb-2">Seguro Desempleo (anual)</label>
+                                        <div class="relative">
+                                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-secondary">$</span>
+                                            <input
+                                                type="number"
+                                                id="seguroDesempleo"
+                                                value="0"
+                                                min="0"
+                                                step="10"
+                                                class="input-dark w-full pl-8 pr-3 py-3 rounded-lg"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <!-- Otros Gastos -->
+                                    <div>
+                                        <label class="block text-xs text-secondary mb-2">Otros Gastos</label>
+                                        <div class="relative">
+                                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-secondary">$</span>
+                                            <input
+                                                type="number"
+                                                id="otrosGastos"
+                                                value="0"
+                                                min="0"
+                                                step="10"
+                                                class="input-dark w-full pl-8 pr-3 py-3 rounded-lg"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Calculate Button -->
+                            <button
+                                type="submit"
+                                class="w-full btn-primary text-lg py-5 rounded-xl font-bold relative overflow-hidden group animate-scale-in"
+                                style="animation-delay: 0.6s"
                             >
-                                <option value="12">Mensual</option>
-                                <option value="4">Trimestral</option>
-                                <option value="2">Semestral</option>
-                                <option value="1">Anual</option>
-                            </select>
-                        </div>
-
-                        <!-- Sistema de Amortización -->
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                Sistema de Amortización
-                            </label>
-                            <select 
-                                id="sistema"
-                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
-                            >
-                                <option value="frances">Francés (Cuota Fija)</option>
-                                <option value="aleman">Alemán (Cuota Decreciente)</option>
-                            </select>
-                        </div>
-
-                        <!-- Costos Adicionales para CFT -->
-                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                            <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
-                                <span class="text-blue-600 mr-2">💰</span>
-                                Costos Adicionales (para CFT)
-                            </h4>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-                                <!-- Comisión de Apertura -->
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                        Comisión de Apertura
-                                    </label>
-                                    <div class="relative">
-                                        <span class="absolute left-4 top-3 text-gray-500 font-semibold">$</span>
-                                        <input
-                                            type="number"
-                                            id="comisionApertura"
-                                            value="0"
-                                            min="0"
-                                            step="10"
-                                            class="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
-                                        >
-                                    </div>
+                                <span class="relative z-10 flex items-center justify-center">
+                                    <span id="btnText">🚀 Calcular Ahora</span>
+                                    <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                    </svg>
+                                </span>
+                                <div id="btnLoader" class="hidden absolute inset-0 flex items-center justify-center">
+                                    <div class="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                                 </div>
-
-                                <!-- Seguro de Vida -->
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                        Seguro de Vida (anual)
-                                    </label>
-                                    <div class="relative">
-                                        <span class="absolute left-4 top-3 text-gray-500 font-semibold">$</span>
-                                        <input
-                                            type="number"
-                                            id="seguroVida"
-                                            value="0"
-                                            min="0"
-                                            step="10"
-                                            class="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
-                                        >
-                                    </div>
-                                </div>
-
-                                <!-- Seguro de Desempleo -->
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                        Seguro Desempleo (anual)
-                                    </label>
-                                    <div class="relative">
-                                        <span class="absolute left-4 top-3 text-gray-500 font-semibold">$</span>
-                                        <input
-                                            type="number"
-                                            id="seguroDesempleo"
-                                            value="0"
-                                            min="0"
-                                            step="10"
-                                            class="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
-                                        >
-                                    </div>
-                                </div>
-
-                                <!-- Otros Gastos -->
-                                <div>
-                                    <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                        Otros Gastos
-                                    </label>
-                                    <div class="relative">
-                                        <span class="absolute left-4 top-3 text-gray-500 font-semibold">$</span>
-                                        <input
-                                            type="number"
-                                            id="otrosGastos"
-                                            value="0"
-                                            min="0"
-                                            step="10"
-                                            class="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-xs text-gray-600 mt-3">
-                                Estos costos se incluyen en el cálculo del CFT (Costo Financiero Total)
-                            </p>
-                        </div>
-
-                        <!-- Calculate Button -->
-                        <button 
-                            type="submit"
-                            class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold py-4 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition transform hover:scale-105 shadow-lg btn-ripple relative"
-                        >
-                            <span id="btnText">Calcular Tasa Efectiva →</span>
-                            <div id="btnLoader" class="hidden absolute inset-0 flex items-center justify-center">
-                                <div class="loading-spinner"></div>
-                            </div>
-                        </button>
-                    </form>
+                            </button>
+                        </form>
+                    </div>
                 </div>
 
                 <!-- Results Panel -->
