@@ -369,6 +369,19 @@ footer {
     font-size: 20px;
     font-weight: bold;
     color: white;
+    margin-bottom: 8px;
+}
+
+.latam-rate-card .click-hint {
+    font-size: 11px;
+    color: rgba(255, 215, 0, 0.7);
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.latam-rate-card:hover .click-hint {
+    opacity: 1;
 }
 
 /* Animaciones para títulos */

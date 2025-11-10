@@ -173,9 +173,18 @@ class CurrencyConverter {
                 card.innerHTML = `
                     <div class="currency-code">${code} ${info.name}</div>
                     <div class="rate-value">${this.formatCurrency(this.rates[code])}</div>
+                    <div class="click-hint">Click para convertir</div>
                 `;
                 // Añadir event listener para convertir al hacer click
-                card.addEventListener('click', () => this.convertFromLatamCard(code));
+                card.addEventListener('click', (e) => {
+                    console.log(`Clicked ${code} card`);
+                    this.convertFromLatamCard(code);
+                    // Efecto visual de feedback
+                    card.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        card.style.transform = '';
+                    }, 150);
+                });
                 grid.appendChild(card);
             }
         }
@@ -199,13 +208,27 @@ class CurrencyConverter {
     }
 
     convertFromLatamCard(currencyCode) {
+        console.log(`Converting from ${currencyCode}`);
+        console.log(`Rate for ${currencyCode}:`, this.rates[currencyCode]);
+
         // Convertir 1 unidad de la moneda seleccionada a USD y EUR
         const rateToUSD = 1 / this.rates[currencyCode]; // Cuánto vale 1 unidad de la moneda en USD
         const rateToEUR = rateToUSD * (this.rates.EUR / this.rates.USD); // Convertir a EUR
 
+        console.log(`1 ${currencyCode} = ${rateToUSD} USD`);
+        console.log(`1 ${currencyCode} = ${rateToEUR} EUR`);
+
         // Actualizar los campos del convertidor
-        document.getElementById('usd-input').value = rateToUSD.toFixed(4);
-        document.getElementById('eur-input').value = rateToEUR.toFixed(4);
+        const usdInput = document.getElementById('usd-input');
+        const eurInput = document.getElementById('eur-input');
+
+        if (usdInput && eurInput) {
+            usdInput.value = rateToUSD.toFixed(4);
+            eurInput.value = rateToEUR.toFixed(4);
+            console.log('Inputs updated successfully');
+        } else {
+            console.error('Could not find input elements');
+        }
     }
 
     showError(message) {
