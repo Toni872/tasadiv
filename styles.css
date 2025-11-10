@@ -232,7 +232,8 @@ section h2 {
     width: 100%;
 }
 
-.convert-btn, .clear-btn {
+.convert-btn,
+.clear-btn {
     width: 100%;
     max-width: 200px;
     padding: 12px 24px;
@@ -327,7 +328,8 @@ footer {
 }
 
 .latam-rates-panel.open {
-    max-height: 1000px; /* Ajustar según contenido */
+    max-height: 1000px;
+    /* Ajustar según contenido */
 }
 
 .latam-rates-panel h3 {
@@ -415,6 +417,7 @@ footer {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -426,6 +429,7 @@ footer {
     from {
         transform: translateY(-50%) rotate(0deg);
     }
+
     to {
         transform: translateY(-50%) rotate(360deg);
     }
@@ -439,7 +443,8 @@ footer {
         gap: 20px;
     }
 
-    .convert-btn, .clear-btn {
+    .convert-btn,
+    .clear-btn {
         width: auto;
         min-width: 120px;
     }
@@ -450,7 +455,8 @@ footer {
         padding: 16px;
     }
 
-    .rates-grid, .converter-grid {
+    .rates-grid,
+    .converter-grid {
         grid-template-columns: 1fr;
         gap: 16px;
     }
@@ -471,7 +477,8 @@ footer {
         margin-top: 16px;
     }
 
-    .convert-btn, .clear-btn {
+    .convert-btn,
+    .clear-btn {
         font-size: 14px;
         padding: 14px 20px;
     }
