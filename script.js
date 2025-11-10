@@ -170,8 +170,7 @@ class CurrencyConverter {
                 const card = document.createElement('div');
                 card.className = 'latam-rate-card';
                 card.innerHTML = `
-                    <div class="currency-code">${code}</div>
-                    <div class="currency-name">${info.name}</div>
+                    <div class="currency-code">${code} ${info.name}</div>
                     <div class="rate-value">${this.formatCurrency(this.rates[code])}</div>
                     <div class="target-currency">VES</div>
                 `;
