@@ -1,4 +1,4 @@
-# Borrador de Listing para Flippa - MonedaLatam
+# Borrador de Listing para Flippa - TasaDiv
 
 ## Título Sugerido
 **Sitio Web de 18 Monedas Latinoamericanas - Cobertura Completa LATAM + $300+/mes con AdSense**
@@ -13,8 +13,8 @@ $1,200 (valor premium por cobertura completa de 18 monedas LATAM)
 
 ## Descripción Detallada
 
-### ¿Qué es MonedaLatam?
-MonedaLatam es una aplicación web completa y altamente rentable que proporciona tasas de cambio en tiempo real para 18 monedas latinoamericanas. Incluye todas las divisas principales: USD, EUR, VES (Venezuela), ARS (Argentina), BRL (Brasil), CLP (Chile), COP (Colombia), MXN (México), PEN (Perú), UYU (Uruguay), PYG (Paraguay), BOB (Bolivia), CRC (Costa Rica), GTQ (Guatemala), HNL (Honduras), NIO (Nicaragua), PAB (Panamá) y SVC (El Salvador). Inspirado en historias de éxito como Timenite (que generó $10K con 161 líneas de JS), este sitio combina cobertura regional completa con potencial de monetización inmediato.
+### ¿Qué es TasaDiv?
+TasaDiv es una aplicación web completa y altamente rentable que proporciona tasas de cambio en tiempo real para 18 monedas latinoamericanas. Incluye todas las divisas principales: USD, EUR, VES (Venezuela), ARS (Argentina), BRL (Brasil), CLP (Chile), COP (Colombia), MXN (México), PEN (Perú), UYU (Uruguay), PYG (Paraguay), BOB (Bolivia), CRC (Costa Rica), GTQ (Guatemala), HNL (Honduras), NIO (Nicaragua), PAB (Panamá) y SVC (El Salvador). Inspirado en historias de éxito como Timenite (que generó $10K con 161 líneas de JS), este sitio combina cobertura regional completa con potencial de monetización inmediato.
 
 ### Características Principales
 - **18 Monedas LATAM**: Cobertura completa de todas las divisas latinoamericanas con tasas en tiempo real
@@ -26,7 +26,7 @@ MonedaLatam es una aplicación web completa y altamente rentable que proporciona
 - **API Integrada**: ExchangeRate-API (plan gratuito hasta 1,500 requests/mes, confiable y sin costos ocultos).
 
 ### Demo en Vivo
-- URL: [https://monedalatam.vercel.app/](https://monedalatam.vercel.app/)
+- URL: [https://tasadiv.vercel.app/](https://tasadiv.vercel.app/)
 - Pruébalo: 18 monedas cargan automáticamente, panel deslizable funciona perfectamente.
 
 ### ¿Por Qué Comprarlo?
@@ -43,8 +43,8 @@ MonedaLatam es una aplicación web completa y altamente rentable que proporciona
 - **Edad del Sitio**: Recién creado, pero probado en producción sin bugs.
 
 ### Transferencia Incluida
-- **Repositorio GitHub**: [https://github.com/Toni872/monedalatam](https://github.com/Toni872/monedalatam) – código completo, documentación y guía de despliegue.
-- **Dominio**: monedalatam.vercel.app (transferible a comprador).
+- **Repositorio GitHub**: [https://github.com/Toni872/tasadiv](https://github.com/Toni872/tasadiv) – código completo, documentación y guía de despliegue.
+- **Dominio**: tasadiv.vercel.app (transferible a comprador).
 - **API Keys**: Instrucciones para configurar ExchangeRate-API (gratuita).
 - **Soporte**: Guía completa en DEPLOYMENT_GUIDE.md para redeploy en minutos.
 

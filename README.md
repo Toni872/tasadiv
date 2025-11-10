@@ -1,4 +1,4 @@
-# MonedaLatam - Tasas de Cambio para Latinoamérica
+# TasaDiv - Tasas de Cambio para Latinoamérica
 
 **Producto web listo para vender: aplicación financiera completa con 18 monedas latinoamericanas.**
 
