@@ -3,6 +3,7 @@ class CurrencyConverter {
     constructor() {
         this.rates = {};
         this.baseUrl = 'https://api.exchangerate-api.com/v4/latest';
+        this.selectedLatamCurrency = null; // Moneda LATAM seleccionada
         this.init();
     }
 
@@ -88,7 +89,8 @@ class CurrencyConverter {
     }
 
     setupEventListeners() {
-        // Inputs del convertidor (solo USD y EUR)
+        // Inputs del convertidor
+        const latamInput = document.getElementById('latam-input');
         const usdInput = document.getElementById('usd-input');
         const eurInput = document.getElementById('eur-input');
 
@@ -96,6 +98,7 @@ class CurrencyConverter {
         const clearBtn = document.getElementById('clear-btn');
 
         // Event listeners para inputs
+        if (latamInput) latamInput.addEventListener('input', () => this.convertFromLatam());
         usdInput.addEventListener('input', () => this.convertFromUSD());
         eurInput.addEventListener('input', () => this.convertFromEUR());
 
@@ -131,9 +134,18 @@ class CurrencyConverter {
         if (usdValue > 0) {
             // Convertir USD a EUR
             const eurValue = usdValue * (this.rates.USD / this.rates.EUR);
-            document.getElementById('eur-input').value = eurValue.toFixed(2);
+            document.getElementById('eur-input').value = eurValue.toFixed(4);
+
+            // Convertir USD a moneda LATAM seleccionada
+            if (this.selectedLatamCurrency) {
+                const latamValue = usdValue * this.rates[this.selectedLatamCurrency];
+                document.getElementById('latam-input').value = latamValue.toFixed(2);
+            }
         } else {
             document.getElementById('eur-input').value = '';
+            if (this.selectedLatamCurrency) {
+                document.getElementById('latam-input').value = '';
+            }
         }
     }
 
@@ -143,14 +155,27 @@ class CurrencyConverter {
         if (eurValue > 0) {
             // Convertir EUR a USD
             const usdValue = eurValue * (this.rates.EUR / this.rates.USD);
-            document.getElementById('usd-input').value = usdValue.toFixed(2);
+            document.getElementById('usd-input').value = usdValue.toFixed(4);
+
+            // Convertir EUR a moneda LATAM seleccionada
+            if (this.selectedLatamCurrency) {
+                const latamValue = eurValue * (this.rates.EUR / this.rates[this.selectedLatamCurrency]);
+                document.getElementById('latam-input').value = latamValue.toFixed(2);
+            }
         } else {
             document.getElementById('usd-input').value = '';
+            if (this.selectedLatamCurrency) {
+                document.getElementById('latam-input').value = '';
+            }
         }
     }
 
     clearAll() {
-        this.clearInputs(['usd-input', 'eur-input']);
+        const inputsToClear = ['usd-input', 'eur-input'];
+        if (this.selectedLatamCurrency) {
+            inputsToClear.push('latam-input');
+        }
+        this.clearInputs(inputsToClear);
     }
 
     clearInputs(inputIds) {
@@ -207,17 +232,52 @@ class CurrencyConverter {
     }
 
     convertFromLatamCard(currencyCode) {
+        // Seleccionar la moneda LATAM como base para conversiones
+        this.selectedLatamCurrency = currencyCode;
+
+        // Actualizar las etiquetas del convertidor
+        this.updateConverterLabels();
+
+        // Habilitar el input de LATAM
+        const latamInput = document.getElementById('latam-input');
+        if (latamInput) {
+            latamInput.disabled = false;
+            latamInput.value = '1.00'; // Valor por defecto
+        }
+
         // Convertir 1 unidad de la moneda seleccionada a USD y EUR
-        const rateToUSD = 1 / this.rates[currencyCode]; // Cuánto vale 1 unidad de la moneda en USD
-        const rateToEUR = rateToUSD * (this.rates.EUR / this.rates.USD); // Convertir a EUR
+        this.convertFromLatam();
+    }
 
-        // Actualizar los campos del convertidor
-        const usdInput = document.getElementById('usd-input');
-        const eurInput = document.getElementById('eur-input');
+    updateConverterLabels() {
+        const latamTitle = document.getElementById('latam-title');
+        const latamLabel = document.getElementById('latam-label');
 
-        if (usdInput && eurInput) {
-            usdInput.value = rateToUSD.toFixed(4);
-            eurInput.value = rateToEUR.toFixed(4);
+        if (this.selectedLatamCurrency && latamTitle && latamLabel) {
+            const currencyInfo = this.latamCurrencies[this.selectedLatamCurrency];
+            latamTitle.textContent = currencyInfo.name;
+            latamLabel.textContent = this.selectedLatamCurrency;
+        } else if (latamTitle && latamLabel) {
+            latamTitle.textContent = 'Seleccionar moneda';
+            latamLabel.textContent = '---';
+        }
+    }
+
+    convertFromLatam() {
+        if (!this.selectedLatamCurrency) return;
+
+        const latamValue = parseFloat(document.getElementById('latam-input').value) || 0;
+
+        if (latamValue > 0) {
+            // Convertir de LATAM a USD y EUR
+            const usdValue = latamValue / this.rates[this.selectedLatamCurrency];
+            const eurValue = usdValue * (this.rates.EUR / this.rates.USD);
+
+            document.getElementById('usd-input').value = usdValue.toFixed(4);
+            document.getElementById('eur-input').value = eurValue.toFixed(4);
+        } else {
+            document.getElementById('usd-input').value = '';
+            document.getElementById('eur-input').value = '';
         }
     }
 
