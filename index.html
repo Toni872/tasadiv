@@ -53,6 +53,22 @@
                 </div>
 
                 <p class="update-notice">Las tasas de cambio se actualizan periódicamente. La información es solo para fines de referencia.</p>
+
+                <!-- Botón para monedas LATAM -->
+                <div class="latam-toggle">
+                    <button id="toggle-latam-rates" class="toggle-button">
+                        Ver más monedas LATAM
+                        <span class="arrow">▼</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Panel deslizable de monedas LATAM -->
+            <section class="latam-rates-panel" id="latam-panel">
+                <h3>Más Monedas de Latinoamérica</h3>
+                <div class="latam-rates-grid" id="latam-rates-grid">
+                    <!-- Las monedas se cargarán dinámicamente -->
+                </div>
             </section>
 
             <!-- Convertidor de Divisas -->
@@ -61,15 +77,6 @@
                 <p class="subtitle">Conversión instantánea</p>
 
                 <div class="converter-grid">
-                    <!-- De VES -->
-                    <div class="converter-card">
-                        <h3>Bolívares</h3>
-                        <div class="input-group">
-                            <input type="number" id="ves-input" placeholder="0.00" step="0.01">
-                            <span class="currency-label">VES</span>
-                        </div>
-                    </div>
-
                     <!-- De USD -->
                     <div class="converter-card">
                         <h3>Dólares</h3>

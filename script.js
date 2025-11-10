@@ -13,21 +13,54 @@ class CurrencyConverter {
 
     async loadExchangeRates() {
         try {
-            // Obtener tasas con base USD
+            // Obtener tasas con base USD para múltiples monedas
             const usdResponse = await fetch(`${this.baseUrl}/USD`);
             const usdData = await usdResponse.json();
 
-            // Obtener tasas con base EUR
-            const eurResponse = await fetch(`${this.baseUrl}/EUR`);
-            const eurData = await eurResponse.json();
-
-            this.rates = {
-                USD: usdData.rates.VES,
-                EUR: eurData.rates.VES,
-                VES: 1 // Base para VES
+            // Monedas LATAM principales
+            const latamCurrencies = {
+                'VES': { name: 'Bolívar', symbol: 'Bs' },
+                'ARS': { name: 'Peso Argentino', symbol: '$' },
+                'BRL': { name: 'Real Brasileño', symbol: 'R$' },
+                'CLP': { name: 'Peso Chileno', symbol: '$' },
+                'COP': { name: 'Peso Colombiano', symbol: '$' },
+                'MXN': { name: 'Peso Mexicano', symbol: '$' },
+                'PEN': { name: 'Sol Peruano', symbol: 'S/' },
+                'UYU': { name: 'Peso Uruguayo', symbol: '$' },
+                'PYG': { name: 'Guaraní Paraguayo', symbol: '₲' },
+                'BOB': { name: 'Boliviano', symbol: 'Bs' },
+                'CRC': { name: 'Colón Costarricense', symbol: '₡' },
+                'GTQ': { name: 'Quetzal Guatemalteco', symbol: 'Q' },
+                'HNL': { name: 'Lempira Hondureño', symbol: 'L' },
+                'NIO': { name: 'Córdoba Nicaragüense', symbol: 'C$' },
+                'PAB': { name: 'Balboa Panameño', symbol: 'B/.' },
+                'SVC': { name: 'Colón Salvadoreño', symbol: '$' }
             };
 
+            // Almacenar todas las tasas a VES
+            this.rates = {};
+            this.latamCurrencies = latamCurrencies;
+
+            for (const [code, info] of Object.entries(latamCurrencies)) {
+                if (usdData.rates[code]) {
+                    this.rates[code] = usdData.rates[code] * usdData.rates.VES;
+                }
+            }
+
+            // Asegurar USD y EUR están incluidos
+            this.rates.USD = usdData.rates.VES;
+
+            // Obtener EUR si no está en la respuesta USD
+            if (!usdData.rates.EUR) {
+                const eurResponse = await fetch(`${this.baseUrl}/EUR`);
+                const eurData = await eurResponse.json();
+                this.rates.EUR = eurData.rates.VES;
+            } else {
+                this.rates.EUR = usdData.rates.EUR * usdData.rates.VES;
+            }
+
             this.updateDisplay();
+            this.renderLatamRates();
         } catch (error) {
             console.error('Error cargando tasas de cambio:', error);
             this.showError('Error al cargar las tasas de cambio. Intente recargar la página.');
@@ -55,8 +88,7 @@ class CurrencyConverter {
     }
 
     setupEventListeners() {
-        // Inputs del convertidor
-        const vesInput = document.getElementById('ves-input');
+        // Inputs del convertidor (solo USD y EUR)
         const usdInput = document.getElementById('usd-input');
         const eurInput = document.getElementById('eur-input');
 
@@ -65,13 +97,18 @@ class CurrencyConverter {
         const clearBtn = document.getElementById('clear-btn');
 
         // Event listeners para inputs
-        vesInput.addEventListener('input', () => this.convertFromVES());
         usdInput.addEventListener('input', () => this.convertFromUSD());
         eurInput.addEventListener('input', () => this.convertFromEUR());
 
         // Event listeners para botones
         convertBtn.addEventListener('click', () => this.convertAll());
         clearBtn.addEventListener('click', () => this.clearAll());
+
+        // Toggle panel LATAM
+        const toggleBtn = document.getElementById('toggle-latam-rates');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => this.toggleLatamPanel());
+        }
     }
 
     convertFromVES() {
@@ -94,15 +131,11 @@ class CurrencyConverter {
         const usdValue = parseFloat(document.getElementById('usd-input').value) || 0;
 
         if (usdValue > 0) {
-            // Convertir USD a VES
-            const vesValue = usdValue * this.rates.USD;
-            document.getElementById('ves-input').value = this.formatCurrency(vesValue);
-
             // Convertir USD a EUR
-            const eurValue = (usdValue * this.rates.USD) / this.rates.EUR;
+            const eurValue = usdValue * (this.rates.USD / this.rates.EUR);
             document.getElementById('eur-input').value = this.formatCurrency(eurValue);
         } else {
-            this.clearInputs(['ves-input', 'eur-input']);
+            document.getElementById('eur-input').value = '';
         }
     }
 
@@ -110,27 +143,20 @@ class CurrencyConverter {
         const eurValue = parseFloat(document.getElementById('eur-input').value) || 0;
 
         if (eurValue > 0) {
-            // Convertir EUR a VES
-            const vesValue = eurValue * this.rates.EUR;
-            document.getElementById('ves-input').value = this.formatCurrency(vesValue);
-
             // Convertir EUR a USD
-            const usdValue = (eurValue * this.rates.EUR) / this.rates.USD;
+            const usdValue = eurValue * (this.rates.EUR / this.rates.USD);
             document.getElementById('usd-input').value = this.formatCurrency(usdValue);
         } else {
-            this.clearInputs(['ves-input', 'usd-input']);
+            document.getElementById('usd-input').value = '';
         }
     }
 
     convertAll() {
         // Convertir desde el input que tenga valor
-        const vesValue = parseFloat(document.getElementById('ves-input').value) || 0;
         const usdValue = parseFloat(document.getElementById('usd-input').value) || 0;
         const eurValue = parseFloat(document.getElementById('eur-input').value) || 0;
 
-        if (vesValue > 0) {
-            this.convertFromVES();
-        } else if (usdValue > 0) {
+        if (usdValue > 0) {
             this.convertFromUSD();
         } else if (eurValue > 0) {
             this.convertFromEUR();
@@ -138,13 +164,51 @@ class CurrencyConverter {
     }
 
     clearAll() {
-        this.clearInputs(['ves-input', 'usd-input', 'eur-input']);
+        this.clearInputs(['usd-input', 'eur-input']);
     }
 
     clearInputs(inputIds) {
         inputIds.forEach(id => {
             document.getElementById(id).value = '';
         });
+    }
+
+    renderLatamRates() {
+        const grid = document.getElementById('latam-rates-grid');
+        if (!grid || !this.latamCurrencies) return;
+
+        grid.innerHTML = '';
+
+        for (const [code, info] of Object.entries(this.latamCurrencies)) {
+            if (this.rates[code] && code !== 'USD' && code !== 'EUR') { // Excluir USD y EUR ya mostrados
+                const card = document.createElement('div');
+                card.className = 'latam-rate-card';
+                card.innerHTML = `
+                    <div class="currency-code">${code}</div>
+                    <div class="currency-name">${info.name}</div>
+                    <div class="rate-value">${this.formatCurrency(this.rates[code])}</div>
+                    <div class="target-currency">VES</div>
+                `;
+                grid.appendChild(card);
+            }
+        }
+    }
+
+    toggleLatamPanel() {
+        const panel = document.getElementById('latam-panel');
+        const button = document.getElementById('toggle-latam-rates');
+
+        if (panel && button) {
+            const isOpen = panel.classList.contains('open');
+
+            if (isOpen) {
+                panel.classList.remove('open');
+                button.classList.remove('active');
+            } else {
+                panel.classList.add('open');
+                button.classList.add('active');
+            }
+        }
     }
 
     showError(message) {
