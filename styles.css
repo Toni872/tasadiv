@@ -35,21 +35,60 @@ body {
     padding: 40px 20px;
 }
 
-/* 📋 HEADER MINIMALISTA */
+/* 🎯 BANNER LLAMATIVO */
 header {
     text-align: center;
-    padding: 30px 0 50px 0;
-    border-bottom: 1px solid var(--border);
+    padding: 0;
+    margin-bottom: 50px;
 }
 
-.logo {
-    display: inline-block;
+.banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.25);
+    position: relative;
+    overflow: hidden;
 }
 
-.logo-image {
-    height: 36px;
-    width: auto;
-    opacity: 0.9;
+.banner::before {
+    content: '💵';
+    position: absolute;
+    font-size: 120px;
+    opacity: 0.1;
+    top: -20px;
+    right: 30px;
+    transform: rotate(-15deg);
+}
+
+.banner::after {
+    content: '💳';
+    position: absolute;
+    font-size: 80px;
+    opacity: 0.1;
+    bottom: -10px;
+    left: 20px;
+    transform: rotate(15deg);
+}
+
+.banner-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--white);
+    margin: 0 0 8px 0;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 1;
+}
+
+.banner-subtitle {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
 }
 
 /* 📄 MAIN CONTENT LIMPIO */
@@ -375,7 +414,30 @@ footer {
     }
 
     header {
-        padding: 20px 0 40px 0;
+        margin-bottom: 40px;
+    }
+
+    .banner {
+        padding: 32px 16px;
+        border-radius: 10px;
+    }
+
+    .banner-title {
+        font-size: 28px;
+    }
+
+    .banner-subtitle {
+        font-size: 14px;
+    }
+
+    .banner::before {
+        font-size: 80px;
+        right: 10px;
+    }
+
+    .banner::after {
+        font-size: 60px;
+        left: 10px;
     }
 
     main {
