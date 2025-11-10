@@ -169,10 +169,13 @@ class CurrencyConverter {
             if (this.rates[code]) { // Incluir todas las monedas LATAM
                 const card = document.createElement('div');
                 card.className = 'latam-rate-card';
+                card.setAttribute('data-currency', code);
                 card.innerHTML = `
                     <div class="currency-code">${code} ${info.name}</div>
                     <div class="rate-value">${this.formatCurrency(this.rates[code])}</div>
                 `;
+                // Añadir event listener para convertir al hacer click
+                card.addEventListener('click', () => this.convertFromLatamCard(code));
                 grid.appendChild(card);
             }
         }
@@ -193,6 +196,16 @@ class CurrencyConverter {
                 button.classList.add('active');
             }
         }
+    }
+
+    convertFromLatamCard(currencyCode) {
+        // Convertir 1 unidad de la moneda seleccionada a USD y EUR
+        const rateToUSD = 1 / this.rates[currencyCode]; // Cuánto vale 1 unidad de la moneda en USD
+        const rateToEUR = rateToUSD * (this.rates.EUR / this.rates.USD); // Convertir a EUR
+
+        // Actualizar los campos del convertidor
+        document.getElementById('usd-input').value = rateToUSD.toFixed(4);
+        document.getElementById('eur-input').value = rateToEUR.toFixed(4);
     }
 
     showError(message) {
