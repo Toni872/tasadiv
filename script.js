@@ -40,12 +40,10 @@ class CurrencyConverter {
 
         if (usdAmount && this.rates.USD) {
             usdAmount.textContent = this.formatCurrency(this.rates.USD);
-            usdAmount.classList.remove('loading');
         }
 
         if (eurAmount && this.rates.EUR) {
             eurAmount.textContent = this.formatCurrency(this.rates.EUR);
-            eurAmount.classList.remove('loading');
         }
     }
 
@@ -177,12 +175,9 @@ class CurrencyConverter {
 
 // Estado de carga para las tasas
 document.addEventListener('DOMContentLoaded', () => {
-    // Agregar clase de loading inicialmente
+    // Inicializar elementos (sin animación de loading)
     const usdAmount = document.getElementById('usd-amount');
     const eurAmount = document.getElementById('eur-amount');
-
-    if (usdAmount) usdAmount.className = 'amount loading';
-    if (eurAmount) eurAmount.className = 'amount loading';
 
     // Inicializar la aplicación
     new CurrencyConverter();

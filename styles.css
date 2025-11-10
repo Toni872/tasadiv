@@ -275,20 +275,7 @@ footer {
     border: none;
 }
 
-/* Loading animation */
-.loading {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--border-color);
-    border-radius: 50%;
-    border-top-color: var(--primary-color);
-    animation: spin 1s ease-in-out infinite;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
+/* Loading animation removed - now just shows text */
 
 /* Responsive */
 @media (min-width: 768px) {
