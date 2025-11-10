@@ -18,10 +18,11 @@ Una aplicación web moderna y minimalista para consultar tasas de cambio actuale
 Puedes ver la aplicación funcionando en: [https://tasareal-5nup.vercel.app/](https://tasareal-5nup.vercel.app/)
 
 ### Screenshots
-- **Vista principal**: Tasas actuales y convertidor
+- **Vista principal (desktop)**: Tasas actuales y convertidor
 - **Mobile responsive**: Funciona perfectamente en teléfonos
 
-*(Incluye screenshots en el repositorio para mostrar el diseño)*
+![Vista Desktop](screenshot-desktop.png)
+![Vista Mobile](screenshot-mobile.png)
 
 ## 📋 Tecnologías
 
