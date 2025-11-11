@@ -579,6 +579,124 @@ h2 {
     color: var(--accent-red);
 }
 
+/* 📈 MARKET OVERVIEW */
+.market-overview {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-md);
+    flex-shrink: 0;
+}
+
+.market-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.market-header h3 {
+    font-size: 14px;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin: 0;
+}
+
+.market-badge {
+    background: rgba(227, 30, 61, 0.15);
+    color: var(--accent-red);
+    font-size: 9px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(227, 30, 61, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.market-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.market-card {
+    background: var(--bg-card);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.market-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-red);
+    box-shadow: var(--shadow-red);
+}
+
+.market-icon {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+.market-info {
+    flex: 1;
+}
+
+.market-name {
+    font-size: 10px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.market-price {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+.market-change {
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-variant-numeric: tabular-nums;
+}
+
+.market-change.positive {
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.market-change.negative {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.market-label {
+    font-size: 9px;
+    color: var(--text-muted);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 /* 🔄 CONVERTER */
 .converter {
     background: var(--bg-card);
@@ -894,6 +1012,15 @@ footer a:hover {
     
     .latam-rate-card {
         min-width: 120px;
+    }
+    
+    .market-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .market-card {
+        padding: 10px;
     }
 }
 

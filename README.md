@@ -23,11 +23,13 @@
 ### 👉 **[VER DEMO FUNCIONANDO](https://tasadiv.vercel.app/)**
 
 **Pruébalo:**
-- ✅ Tasas USD/EUR actualizan automáticamente
-- ✅ Panel con 18 monedas LATAM expandible
+- ✅ Bitcoin & Ethereum prices en tiempo real
+- ✅ 18 monedas LATAM con scroll horizontal
 - ✅ Click en cualquier moneda para convertir
 - ✅ Conversión bidireccional instantánea
-- ✅ 100% responsive en móvil
+- ✅ Selector de idioma (EN/ES)
+- ✅ 100% responsive sin scroll vertical
+- ✅ Market overview actualizado cada 60s
 
 ---
 
@@ -46,19 +48,33 @@
 ### 🎨 **Diseño Profesional Ultra-Limpio**
 - Banner con gradiente moderno
 - Interfaz minimalista estilo fintech
-- Colores neutros que inspiran confianza
+- Layout sin scroll (todo visible en una pantalla)
 - 100% responsive (desktop, tablet, móvil)
+- Scroll horizontal para monedas LATAM
 
 ### 💰 **18 Monedas LATAM en Tiempo Real**
 - USD, EUR, VES, ARS, BRL, CLP, COP, MXN, PEN, UYU, PYG, BOB, CRC, GTQ, HNL, NIO, PAB, SVC
 - Actualización automática vía ExchangeRate-API
-- Panel expandible con un click
+- Panel siempre visible con scroll horizontal
+
+### 📈 **Market Overview con Crypto + Stats**
+- **Bitcoin & Ethereum** prices en tiempo real (CoinGecko API)
+- Cambio 24h con indicadores verde/rojo
+- Promedio LATAM calculado automáticamente
+- Actualización cada 60 segundos
+- Sin API key requerida
 
 ### 🔄 **Convertidor Bidireccional Inteligente**
 - Conversión instantánea entre cualquier par
 - Click en moneda → conversión automática a USD/EUR
 - Input en tiempo real sin botones
 - Limpiar con un solo click
+
+### 🌐 **Multiidioma (Inglés/Español)**
+- Selector de idioma en header
+- Traducciones completas de toda la UI
+- Cambio instantáneo sin recargar
+- Persistencia de preferencia
 
 ### 🔧 **Tecnología Simple = Fácil Mantener**
 - Solo HTML, CSS, JavaScript puro
@@ -68,11 +84,11 @@
 - Junior-friendly
 
 ### 📊 **SEO y Monetización Lista**
-- 2 espacios AdSense preparados (728x90)
 - Structured data (Schema.org)
 - Sitemap.xml + robots.txt
 - Meta tags optimizados
 - PWA con offline support
+- APIs gratuitas sin límites estrictos
 
 ---
 
@@ -100,18 +116,22 @@
 ## 🛠️ Stack Tecnológico
 
 ```
-Frontend:  HTML5, CSS3, JavaScript (ES6+)
-Backend:   Ninguno (100% estático)
-API:       ExchangeRate-API (gratuita)
-Hosting:   Vercel (gratuito)
-Database:  No requiere
+Frontend:     HTML5, CSS3, JavaScript (ES6+)
+Backend:      Ninguno (100% estático)
+APIs:         • ExchangeRate-API (tasas de cambio)
+              • CoinGecko API (crypto prices)
+Hosting:      Vercel (gratuito)
+Database:     No requiere
+PWA:          Service Worker + Manifest
 ```
 
 **Ventajas:**
 - ✅ Sin costos de servidor
+- ✅ APIs gratuitas sin límites estrictos
 - ✅ Sin mantenimiento complejo
 - ✅ Junior-friendly
 - ✅ Deploy en 5 minutos
+- ✅ Actualización automática de datos
 
 ---
 
@@ -189,15 +209,26 @@ open index.html
 
 ---
 
-## 📊 API de Tasas de Cambio
+## 📊 APIs Utilizadas
 
-**ExchangeRate-API** ([exchangerate-api.com](https://exchangerate-api.com))
+### **ExchangeRate-API** ([exchangerate-api.com](https://exchangerate-api.com))
+**Tasas de Cambio FIAT**
 
 - ✅ Plan gratuito: 1,500 requests/mes
 - ✅ Tasas actualizadas diariamente
 - ✅ 161 monedas disponibles
 - ✅ Confiable y rápido
 - ✅ Plan Pro: $9/mes (50K requests)
+
+### **CoinGecko API** ([coingecko.com](https://www.coingecko.com/en/api))
+**Precios de Criptomonedas**
+
+- ✅ Completamente gratuita
+- ✅ Sin API key requerida
+- ✅ Bitcoin & Ethereum en tiempo real
+- ✅ Cambio 24h incluido
+- ✅ Actualización cada 60 segundos
+- ✅ Límite: 10-50 req/min (más que suficiente)
 
 ---
 

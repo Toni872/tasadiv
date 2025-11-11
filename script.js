@@ -9,7 +9,11 @@ class CurrencyConverter {
 
     async init() {
         await this.loadExchangeRates();
+        this.loadCryptoData();
         this.setupEventListeners();
+        
+        // Actualizar crypto cada 60 segundos
+        setInterval(() => this.loadCryptoData(), 60000);
     }
 
     async loadExchangeRates() {
@@ -178,6 +182,50 @@ class CurrencyConverter {
         });
     }
 
+    async loadCryptoData() {
+        try {
+            const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true');
+            const data = await response.json();
+            
+            // Bitcoin
+            const btcPrice = data.bitcoin.usd;
+            const btcChange = data.bitcoin.usd_24h_change;
+            document.getElementById('btc-price').textContent = `$${btcPrice.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+            const btcChangeEl = document.getElementById('btc-change');
+            btcChangeEl.textContent = `${btcChange >= 0 ? '+' : ''}${btcChange.toFixed(2)}%`;
+            btcChangeEl.className = `market-change ${btcChange >= 0 ? 'positive' : 'negative'}`;
+            
+            // Ethereum
+            const ethPrice = data.ethereum.usd;
+            const ethChange = data.ethereum.usd_24h_change;
+            document.getElementById('eth-price').textContent = `$${ethPrice.toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+            const ethChangeEl = document.getElementById('eth-change');
+            ethChangeEl.textContent = `${ethChange >= 0 ? '+' : ''}${ethChange.toFixed(2)}%`;
+            ethChangeEl.className = `market-change ${ethChange >= 0 ? 'positive' : 'negative'}`;
+            
+            // Calcular promedio LATAM
+            this.updateLatamStats();
+        } catch (error) {
+            console.error('Error loading crypto data:', error);
+            document.getElementById('btc-price').textContent = 'N/A';
+            document.getElementById('eth-price').textContent = 'N/A';
+        }
+    }
+    
+    updateLatamStats() {
+        if (!this.rates || Object.keys(this.rates).length === 0) return;
+        
+        // Calcular promedio de todas las monedas LATAM
+        const latamRates = Object.entries(this.rates)
+            .filter(([code]) => this.latamCurrencies && this.latamCurrencies[code])
+            .map(([_, rate]) => rate);
+        
+        if (latamRates.length > 0) {
+            const average = latamRates.reduce((a, b) => a + b, 0) / latamRates.length;
+            document.getElementById('latam-avg').textContent = average.toLocaleString('en-US', {maximumFractionDigits: 2});
+        }
+    }
+
     renderLatamRates() {
         const grid = document.getElementById('latam-rates-grid');
         if (!grid || !this.latamCurrencies) return;
@@ -206,6 +254,9 @@ class CurrencyConverter {
                 grid.appendChild(card);
             }
         }
+        
+        // Actualizar stats después de renderizar
+        this.updateLatamStats();
     }
 
 
@@ -320,6 +371,12 @@ document.addEventListener('DOMContentLoaded', () => {
             latamTitle: 'Latin American Currencies',
             realTimeData: 'Real-Time Data',
             clickHint: 'Click to convert',
+            marketOverview: 'Market Overview',
+            marketLive: 'Live',
+            bitcoin: 'Bitcoin',
+            ethereum: 'Ethereum',
+            latamAverage: 'LATAM Average',
+            perUsd: 'Per USD',
             converter: 'Currency Converter',
             instantConversion: 'Instant Conversion • Bidirectional Exchange',
             selectCurrency: 'Select Currency',
@@ -340,6 +397,12 @@ document.addEventListener('DOMContentLoaded', () => {
             latamTitle: 'Monedas Latinoamericanas',
             realTimeData: 'Datos en Tiempo Real',
             clickHint: 'Click para convertir',
+            marketOverview: 'Resumen de Mercado',
+            marketLive: 'En Vivo',
+            bitcoin: 'Bitcoin',
+            ethereum: 'Ethereum',
+            latamAverage: 'Promedio LATAM',
+            perUsd: 'Por USD',
             converter: 'Convertidor de Divisas',
             instantConversion: 'Conversión Instantánea • Intercambio Bidireccional',
             selectCurrency: 'Seleccionar Moneda',
@@ -409,6 +472,18 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.click-hint').forEach(el => {
             el.textContent = t.clickHint;
         });
+        
+        // Market Overview
+        const marketHeader = document.querySelector('.market-header h3');
+        if (marketHeader) marketHeader.textContent = t.marketOverview;
+        const marketBadge = document.querySelector('.market-badge');
+        if (marketBadge) marketBadge.textContent = t.marketLive;
+        const marketNames = document.querySelectorAll('.market-name');
+        if (marketNames[0]) marketNames[0].textContent = t.bitcoin;
+        if (marketNames[1]) marketNames[1].textContent = t.ethereum;
+        if (marketNames[2]) marketNames[2].textContent = t.latamAverage;
+        const marketLabel = document.querySelector('.market-label');
+        if (marketLabel) marketLabel.textContent = t.perUsd;
         
         // Converter
         document.querySelector('.converter h2').textContent = t.converter;
