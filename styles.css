@@ -57,6 +57,116 @@ header {
     text-align: center;
     padding: 0;
     margin-bottom: 60px;
+    position: relative;
+}
+
+/* 🌐 LANGUAGE SELECTOR */
+.language-selector {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.lang-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    padding: 10px 16px;
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-sm);
+}
+
+.lang-button:hover {
+    border-color: var(--accent-red);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-red);
+}
+
+.lang-icon {
+    color: var(--text-secondary);
+}
+
+.arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+.lang-button.active .arrow-icon {
+    transform: rotate(180deg);
+}
+
+#current-lang {
+    font-family: monospace;
+    letter-spacing: 0.5px;
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    min-width: 200px;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.lang-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.lang-option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.lang-option:hover {
+    background: var(--bg-hover);
+}
+
+.lang-option:not(:last-child) {
+    border-bottom: 1px solid var(--border-light);
+}
+
+.lang-option .flag {
+    font-size: 20px;
+}
+
+.lang-option .check {
+    margin-left: auto;
+    color: var(--accent-red);
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.lang-option.active .check {
+    opacity: 1;
 }
 
 .banner {
@@ -764,6 +874,13 @@ footer a:hover {
         padding: 30px 15px;
     }
 
+    .language-selector {
+        position: static;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
     .banner {
         padding: 40px 20px;
         border-radius: 16px;
@@ -775,6 +892,11 @@ footer a:hover {
 
     .banner-subtitle {
         font-size: 16px;
+    }
+
+    .banner-metrics {
+        flex-direction: column;
+        gap: 20px;
     }
 
     h2 {

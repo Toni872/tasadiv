@@ -341,4 +341,163 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializar la aplicación
     new CurrencyConverter();
+
+    // 🌐 Language Selector
+    const langButton = document.getElementById('lang-button');
+    const langDropdown = document.getElementById('lang-dropdown');
+    const langOptions = document.querySelectorAll('.lang-option');
+    const currentLangText = document.getElementById('current-lang');
+
+    const translations = {
+        en: {
+            liveBadge: 'LIVE DATA',
+            title: 'TasaDiv',
+            subtitle: 'Real-Time Exchange Rates • 18 LATAM Currencies • API-Powered',
+            currencies: 'Currencies',
+            responseTime: 'Response Time',
+            uptime: 'Uptime',
+            currentRates: 'Current Exchange Rates',
+            baseCurrencies: 'Base Currencies • Updated in Real-Time',
+            usd: 'United States Dollar',
+            eur: 'Euro',
+            lastUpdate: 'Last update:',
+            updateNotice: 'Exchange rates are updated periodically via ExchangeRate-API. Data is for reference purposes only.',
+            viewLatam: 'View All LATAM Currencies',
+            latamTitle: 'Latin American Currencies',
+            realTimeData: 'Real-Time Data',
+            clickHint: 'Click to convert',
+            converter: 'Currency Converter',
+            instantConversion: 'Instant Conversion • Bidirectional Exchange',
+            selectCurrency: 'Select Currency',
+            clickAnyCurrency: 'Click any LATAM currency below',
+            clearAll: 'Clear All',
+            footer: 'All rights reserved.',
+            pwaEnabled: 'PWA Enabled',
+            apiPowered: 'API-Powered',
+            realTime: 'Real-Time'
+        },
+        es: {
+            liveBadge: 'DATOS EN VIVO',
+            title: 'TasaDiv',
+            subtitle: 'Tasas de Cambio en Tiempo Real • 18 Monedas LATAM • Con API',
+            currencies: 'Monedas',
+            responseTime: 'Tiempo Respuesta',
+            uptime: 'Disponibilidad',
+            currentRates: 'Tasas de Cambio Actuales',
+            baseCurrencies: 'Monedas Base • Actualizadas en Tiempo Real',
+            usd: 'Dólar Estadounidense',
+            eur: 'Euro',
+            lastUpdate: 'Última actualización:',
+            updateNotice: 'Las tasas de cambio se actualizan periódicamente vía ExchangeRate-API. Los datos son solo para referencia.',
+            viewLatam: 'Ver Todas las Monedas LATAM',
+            latamTitle: 'Monedas Latinoamericanas',
+            realTimeData: 'Datos en Tiempo Real',
+            clickHint: 'Click para convertir',
+            converter: 'Convertidor de Divisas',
+            instantConversion: 'Conversión Instantánea • Intercambio Bidireccional',
+            selectCurrency: 'Seleccionar Moneda',
+            clickAnyCurrency: 'Haz click en cualquier moneda LATAM',
+            clearAll: 'Limpiar Todo',
+            footer: 'Todos los derechos reservados.',
+            pwaEnabled: 'PWA Habilitado',
+            apiPowered: 'Con API',
+            realTime: 'Tiempo Real'
+        }
+    };
+
+    let currentLang = 'en';
+
+    // Toggle dropdown
+    langButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langButton.classList.toggle('active');
+        langDropdown.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!langButton.contains(e.target) && !langDropdown.contains(e.target)) {
+            langButton.classList.remove('active');
+            langDropdown.classList.remove('show');
+        }
+    });
+
+    // Change language
+    langOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const lang = option.dataset.lang;
+            if (lang !== currentLang) {
+                currentLang = lang;
+                currentLangText.textContent = lang.toUpperCase();
+                
+                // Update active state
+                langOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                
+                // Apply translations
+                applyTranslations(lang);
+                
+                // Close dropdown
+                langButton.classList.remove('active');
+                langDropdown.classList.remove('show');
+            }
+        });
+    });
+
+    function applyTranslations(lang) {
+        const t = translations[lang];
+        
+        // Banner
+        document.querySelector('.banner-badge').textContent = t.liveBadge;
+        document.querySelector('.banner-subtitle').textContent = t.subtitle;
+        document.querySelectorAll('.metric-label')[0].textContent = t.currencies;
+        document.querySelectorAll('.metric-label')[1].textContent = t.responseTime;
+        document.querySelectorAll('.metric-label')[2].textContent = t.uptime;
+        
+        // Exchange rates section
+        document.querySelector('.exchange-rates h2').textContent = t.currentRates;
+        document.querySelector('.exchange-rates .subtitle').textContent = t.baseCurrencies;
+        document.querySelectorAll('.currency-name')[0].textContent = t.usd;
+        document.querySelectorAll('.currency-name')[1].textContent = t.eur;
+        document.querySelectorAll('.update-time').forEach(el => {
+            const timeSpan = el.querySelector('span');
+            const time = timeSpan.textContent;
+            el.innerHTML = `${t.lastUpdate} <span id="${el.querySelector('span').id}">${time}</span>`;
+        });
+        document.querySelector('.update-notice').textContent = t.updateNotice;
+        
+        // LATAM button
+        document.querySelector('.btn-text').textContent = t.viewLatam;
+        
+        // LATAM panel
+        const panelHeader = document.querySelector('.panel-header h3');
+        if (panelHeader) panelHeader.textContent = t.latamTitle;
+        const panelBadge = document.querySelector('.panel-badge');
+        if (panelBadge) panelBadge.textContent = t.realTimeData;
+        document.querySelectorAll('.click-hint').forEach(el => {
+            el.textContent = t.clickHint;
+        });
+        
+        // Converter
+        document.querySelector('.converter h2').textContent = t.converter;
+        document.querySelector('.converter .subtitle').textContent = t.instantConversion;
+        const latamTitle = document.getElementById('latam-title');
+        if (latamTitle && latamTitle.textContent === 'Select Currency') {
+            latamTitle.textContent = t.selectCurrency;
+        }
+        const hint = document.querySelector('.hint');
+        if (hint) hint.textContent = t.clickAnyCurrency;
+        document.querySelectorAll('.card-label span')[1].textContent = t.usd;
+        document.querySelectorAll('.card-label span')[2].textContent = t.eur;
+        document.getElementById('clear-btn').textContent = t.clearAll;
+        
+        // Footer
+        document.querySelector('footer p').textContent = `© 2025 TasaDiv. ${t.footer}`;
+        document.querySelectorAll('.footer-badge')[0].textContent = t.pwaEnabled;
+        document.querySelectorAll('.footer-badge')[1].textContent = t.apiPowered;
+        document.querySelectorAll('.footer-badge')[2].textContent = t.realTime;
+    }
+
+    // Set initial language (English)
+    langOptions[0].classList.add('active');
 });

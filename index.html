@@ -43,6 +43,33 @@
 <body>
     <div class="container">
         <header>
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <button class="lang-button" id="lang-button">
+                    <svg class="lang-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                    <span id="current-lang">EN</span>
+                    <svg class="arrow-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                        <path d="M6 9L1 4h10z"></path>
+                    </svg>
+                </button>
+                <div class="lang-dropdown" id="lang-dropdown">
+                    <button class="lang-option" data-lang="en">
+                        <span class="flag">🇺🇸</span>
+                        <span>English</span>
+                        <span class="check">✓</span>
+                    </button>
+                    <button class="lang-option" data-lang="es">
+                        <span class="flag">🇪🇸</span>
+                        <span>Español</span>
+                        <span class="check">✓</span>
+                    </button>
+                </div>
+            </div>
+
             <div class="banner">
                 <div class="banner-badge">LIVE DATA</div>
                 <h1 class="banner-title">TasaDiv</h1>
@@ -101,12 +128,6 @@
                 </div>
 
                 <p class="update-notice">Exchange rates are updated periodically via ExchangeRate-API. Data is for reference purposes only.</p>
-
-                <!-- Espacio para AdSense - Header Banner -->
-                <div class="ad-space" id="ad-header-banner">
-                    <span class="ad-label">ADVERTISEMENT</span>
-                    <p style="margin: 8px 0 0 0; opacity: 0.4; font-size: 12px;">728x90 Ad Space</p>
-                </div>
 
                 <!-- Botón para monedas LATAM -->
                 <div class="latam-toggle">
@@ -174,12 +195,6 @@
                     <button id="clear-btn" class="clear-btn">Clear All</button>
                 </div>
             </section>
-
-            <!-- Espacio para AdSense - Footer Banner -->
-            <aside class="ad-space ad-space-footer" id="ad-footer-banner">
-                <span class="ad-label">ADVERTISEMENT</span>
-                <p style="margin: 8px 0 0 0; opacity: 0.4; font-size: 12px;">728x90 Ad Space</p>
-            </aside>
         </main>
 
         <footer>
