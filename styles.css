@@ -35,10 +35,13 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', sans-serif;
-    line-height: 1.6;
+    line-height: 1.4;
     color: var(--text-primary);
     background: var(--bg-primary);
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-image: 
@@ -47,17 +50,22 @@ body {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 0 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 /* 🎯 HEADER MODERN */
 header {
     text-align: center;
-    padding: 0;
-    margin-bottom: 60px;
+    padding: 15px 0 10px 0;
     position: relative;
+    flex-shrink: 0;
 }
 
 /* 🌐 LANGUAGE SELECTOR */
@@ -171,13 +179,13 @@ header {
 
 .banner {
     background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
-    padding: 50px 30px;
-    border-radius: 20px;
-    box-shadow: var(--shadow-lg);
+    padding: 20px 25px 15px 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
     position: relative;
     overflow: hidden;
     border: 1px solid var(--border-color);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
 }
 
 .banner::before {
@@ -218,64 +226,60 @@ header {
     display: inline-block;
     background: var(--accent-red);
     color: var(--text-primary);
-    font-size: 11px;
+    font-size: 9px;
     font-weight: 700;
-    padding: 4px 12px;
+    padding: 3px 10px;
     border-radius: 4px;
     letter-spacing: 1px;
-    margin-bottom: 20px;
-    animation: fadeIn 0.6s ease-out;
+    margin-bottom: 8px;
 }
 
 .banner-title {
-    font-size: 56px;
+    font-size: 28px;
     font-weight: 800;
     color: var(--text-primary);
-    margin: 0 0 15px 0;
-    letter-spacing: -2px;
+    margin: 0 0 5px 0;
+    letter-spacing: -1px;
     position: relative;
     z-index: 1;
-    animation: fadeInDown 0.8s ease-out;
 }
 
 .banner-subtitle {
-    font-size: 16px;
+    font-size: 11px;
     color: var(--text-secondary);
-    margin: 0 0 30px 0;
+    margin: 0 0 12px 0;
     font-weight: 400;
     position: relative;
     z-index: 1;
-    letter-spacing: 0.5px;
-    animation: fadeInUp 0.8s ease-out 0.2s both;
+    letter-spacing: 0.3px;
 }
 
 .banner-metrics {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-top: 30px;
-    animation: fadeInUp 0.8s ease-out 0.4s both;
+    gap: 25px;
+    margin-top: 0;
 }
 
 .metric {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
 }
 
 .metric-value {
-    font-size: 28px;
+    font-size: 18px;
     font-weight: 800;
     color: var(--accent-red);
     line-height: 1;
 }
 
 .metric-label {
-    font-size: 11px;
+    font-size: 9px;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     font-weight: 600;
 }
 
@@ -301,10 +305,18 @@ header {
     }
 }
 
-/* 📊 CARDS MODERNAS */
+/* 📊 MAIN LAYOUT */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+
 section {
-    margin-bottom: 60px;
-    animation: fadeIn 0.6s ease-out;
+    flex-shrink: 0;
 }
 
 @keyframes fadeIn {
@@ -313,33 +325,18 @@ section {
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 25px;
+    margin-bottom: 12px;
     text-align: center;
-    position: relative;
-    padding-bottom: 15px;
 }
 
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: var(--accent-red);
-    border-radius: 2px;
-}
-
-.disclaimer {
+.subtitle {
+    font-size: 10px;
+    color: var(--text-secondary);
     text-align: center;
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-top: 15px;
-    font-style: italic;
+    margin-bottom: 8px;
 }
 
 /* 💱 RATES DISPLAY */
@@ -447,24 +444,26 @@ h2::after {
 /* 🌎 LATAM PANEL */
 .latam-rates-panel {
     background: var(--bg-secondary);
-    border-radius: 20px;
-    padding: 40px 30px;
+    border-radius: 12px;
+    padding: 15px;
     border: 1px solid var(--border-light);
-    box-shadow: var(--shadow-lg);
-    margin-bottom: 40px;
+    box-shadow: var(--shadow-md);
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .panel-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-    gap: 15px;
+    margin-bottom: 12px;
+    flex-shrink: 0;
 }
 
 .panel-header h3 {
-    font-size: 22px;
+    font-size: 14px;
     color: var(--text-primary);
     font-weight: 700;
     margin: 0;
@@ -473,30 +472,55 @@ h2::after {
 .panel-badge {
     background: rgba(227, 30, 61, 0.15);
     color: var(--accent-red);
-    font-size: 11px;
+    font-size: 9px;
     font-weight: 700;
-    padding: 6px 14px;
-    border-radius: 6px;
+    padding: 4px 10px;
+    border-radius: 4px;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     border: 1px solid rgba(227, 30, 61, 0.3);
 }
 
 .latam-rates-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 16px;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.latam-rates-grid::-webkit-scrollbar {
+    height: 6px;
+}
+
+.latam-rates-grid::-webkit-scrollbar-track {
+    background: var(--bg-card);
+    border-radius: 3px;
+}
+
+.latam-rates-grid::-webkit-scrollbar-thumb {
+    background: var(--accent-red);
+    border-radius: 3px;
+}
+
+.latam-rates-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-red-hover);
 }
 
 .latam-rate-card {
     background: var(--bg-card);
-    padding: 20px;
-    border-radius: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
     border: 1px solid var(--border-color);
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    min-width: 140px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
 }
 
 .latam-rate-card::after {
@@ -527,22 +551,26 @@ h2::after {
 }
 
 .latam-rate-card .currency-code {
-    font-size: 18px;
-    margin-bottom: 8px;
+    font-size: 11px;
+    margin-bottom: 4px;
     font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.latam-rate-card .exchange-rate {
-    font-size: 24px;
-    margin-bottom: 8px;
+.latam-rate-card .rate-value {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--accent-red);
+    margin-bottom: 4px;
 }
 
 .latam-rate-card .click-hint {
-    font-size: 12px;
+    font-size: 9px;
     color: var(--text-muted);
     text-align: center;
-    margin-top: 8px;
-    opacity: 0;
+    opacity: 0.6;
     transition: opacity 0.3s;
 }
 
@@ -554,34 +582,50 @@ h2::after {
 /* 🔄 CONVERTER */
 .converter {
     background: var(--bg-card);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: var(--shadow-lg);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
     border: 1px solid var(--border-color);
-    position: relative;
-    overflow: hidden;
-}
-
-.converter::before {
-    content: '';
-    position: absolute;
-    top: -100px;
-    right: -100px;
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, rgba(227, 30, 61, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
+    flex-shrink: 0;
 }
 
 .converter h2 {
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 
-.converter-subtitle {
+.converter-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.converter-card {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.converter-actions {
     text-align: center;
-    color: var(--text-secondary);
-    font-size: 14px;
-    margin-bottom: 30px;
+}
+
+#clear-btn {
+    background: var(--accent-red);
+    color: var(--text-primary);
+    border: none;
+    padding: 8px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#clear-btn:hover {
+    background: var(--accent-red-hover);
+    transform: translateY(-2px);
 }
 
 .input-group {
@@ -590,22 +634,21 @@ h2::after {
 }
 
 .card-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
 }
 
 .card-label span:first-child {
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 600;
     color: var(--text-primary);
+    display: block;
 }
 
 .hint {
-    font-size: 11px;
+    font-size: 8px;
     color: var(--text-muted);
-    font-style: italic;
+    display: block;
+    margin-top: 2px;
 }
 
 .input-wrapper {
@@ -616,27 +659,27 @@ h2::after {
 
 .input-wrapper input {
     width: 100%;
-    padding: 16px 60px 16px 20px;
-    font-size: 20px;
+    padding: 8px 50px 8px 10px;
+    font-size: 14px;
     font-weight: 600;
-    background: var(--bg-secondary);
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
     color: var(--text-primary);
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     font-variant-numeric: tabular-nums;
 }
 
 .currency-tag {
     position: absolute;
-    right: 20px;
-    font-size: 13px;
+    right: 8px;
+    font-size: 10px;
     font-weight: 700;
     color: var(--accent-red);
     background: rgba(227, 30, 61, 0.1);
-    padding: 4px 10px;
-    border-radius: 6px;
-    letter-spacing: 0.5px;
+    padding: 3px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
 }
 
 .input-wrapper input:focus {
@@ -746,43 +789,41 @@ h2::after {
 /* 🦶 FOOTER */
 footer {
     text-align: center;
-    padding: 40px 20px;
+    padding: 10px 20px;
     color: var(--text-muted);
-    font-size: 14px;
+    font-size: 10px;
     border-top: 1px solid var(--border-light);
-    margin-top: 80px;
+    flex-shrink: 0;
 }
 
 .footer-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 8px;
+}
+
+footer p {
+    margin: 0;
 }
 
 .footer-badges {
     display: flex;
-    gap: 12px;
+    gap: 6px;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .footer-badge {
-    font-size: 10px;
+    font-size: 8px;
     font-weight: 600;
     color: var(--text-muted);
     background: var(--bg-secondary);
-    padding: 6px 14px;
-    border-radius: 6px;
+    padding: 3px 8px;
+    border-radius: 4px;
     border: 1px solid var(--border-light);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     text-transform: uppercase;
-    transition: all 0.3s ease;
-}
-
-.footer-badge:hover {
-    border-color: var(--accent-red);
-    color: var(--accent-red);
 }
 
 footer a {
@@ -799,76 +840,80 @@ footer a:hover {
 /* 📱 RESPONSIVE */
 @media (max-width: 768px) {
     .container {
-        padding: 30px 15px;
+        padding: 0 10px;
     }
 
     .language-selector {
-        position: static;
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: flex-end;
+        position: absolute;
+        top: 5px;
+        right: 5px;
     }
-
+    
+    .lang-button {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+    
+    header {
+        padding: 10px 0;
+    }
+    
     .banner {
-        padding: 40px 20px;
-        border-radius: 16px;
+        padding: 15px 20px 12px 20px;
     }
-
+    
     .banner-title {
-        font-size: 36px;
-    }
-
-    .banner-subtitle {
-        font-size: 16px;
-    }
-
-    .banner-metrics {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    h2 {
         font-size: 22px;
     }
-
-    .rates {
+    
+    .banner-subtitle {
+        font-size: 9px;
+    }
+    
+    .metric-value {
+        font-size: 14px;
+    }
+    
+    .metric-label {
+        font-size: 7px;
+    }
+    
+    .converter-grid {
         grid-template-columns: 1fr;
+        gap: 6px;
     }
-
-    .converter {
-        padding: 30px 20px;
+    
+    main {
+        gap: 10px;
     }
-
-    .converter-actions {
-        flex-direction: column;
+    
+    h2 {
+        font-size: 13px;
+        margin-bottom: 8px;
     }
-
-    .latam-rates-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .latam-rates-panel {
-        padding: 30px 20px;
+    
+    .latam-rate-card {
+        min-width: 120px;
     }
 }
 
 @media (max-width: 480px) {
     .banner-title {
-        font-size: 28px;
+        font-size: 20px;
     }
 
     .banner-subtitle {
-        font-size: 14px;
+        font-size: 8px;
     }
-
-    .currency-code {
-        font-size: 24px;
+    
+    .converter-grid {
+        grid-template-columns: 1fr !important;
     }
-
-    .exchange-rate {
-        font-size: 30px;
+    
+    .input-wrapper input {
+        font-size: 12px;
+        padding: 6px 45px 6px 8px;
     }
-
 }
 
 /* ⚡ PERFORMANCE OPTIMIZATIONS */
