@@ -290,7 +290,7 @@ Este proyecto está disponible para compra y uso comercial.
 
 ## 🎉 ¿Listo para Comprar?
 
-### 💵 **Precio: $1,499**
+### 💵 **Disponible en Flippa**
 
 **Incluye:**
 - ✅ Aplicación completa funcionando
@@ -301,7 +301,8 @@ Este proyecto está disponible para compra y uso comercial.
 - ✅ Screenshots incluidos
 - ✅ 30 días de soporte
 
-**Contacto:** [Ver en Flippa](https://flippa.com) o abrir issue en GitHub
+**Ver listing completo:** [Disponible en Flippa](https://flippa.com)
+**Precio:** Negociable según condiciones - Ver en Flippa para detalles
 
 ---
 
