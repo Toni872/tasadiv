@@ -250,17 +250,13 @@ open index.html
 
 ## 📚 Documentación Incluida
 
-Este repositorio incluye **7 guías completas**:
+Este repositorio incluye **3 guías completas**:
 
 1. **README.md** - Este archivo
-2. **ADSENSE_GUIDE.md** - Monetización paso a paso
-3. **DEPLOYMENT_GUIDE.md** - Deploy en Vercel
-4. **FLIPPA_LISTING.md** - Listing para venta
-5. **FLIPPA_CHECKLIST.md** - Checklist completo
-6. **PRODUCTION_CHECKLIST.md** - Optimizaciones
-7. **FINAL_REPORT.md** - Reporte ejecutivo
+2. **ADSENSE_GUIDE.md** - Monetización paso a paso con Google AdSense
+3. **DEPLOYMENT_GUIDE.md** - Guía completa de despliegue en Vercel
 
-**Total:** ~50 páginas de documentación profesional
+**Total:** Documentación profesional lista para usar
 
 ---
 
@@ -268,8 +264,9 @@ Este repositorio incluye **7 guías completas**:
 
 ### Incluido en la Compra
 - ✅ Código fuente completo
-- ✅ 7 guías de documentación
+- ✅ 3 guías de documentación completas
 - ✅ Configuración Vercel lista
+- ✅ Screenshots desktop y móvil
 - ✅ **30 días de soporte** post-venta
 
 ### Contacto
@@ -299,8 +296,9 @@ Este proyecto está disponible para compra y uso comercial.
 - ✅ Aplicación completa funcionando
 - ✅ 18 monedas LATAM en tiempo real
 - ✅ Diseño profesional ultra-limpio
-- ✅ Documentación exhaustiva (7 guías)
+- ✅ Documentación completa (3 guías)
 - ✅ Deploy en Vercel listo
+- ✅ Screenshots incluidos
 - ✅ 30 días de soporte
 
 **Contacto:** [Ver en Flippa](https://flippa.com) o abrir issue en GitHub
