@@ -60,16 +60,20 @@ class CurrencyConverter {
                 }
             }
 
-            // Asegurar USD y EUR están incluidos
+            // Almacenar tasa USD a VES para conversiones LATAM
             this.rates.USD = usdData.rates.VES;
 
-            // Obtener EUR si no está en la respuesta USD
+            // Almacenar tasa USD a EUR para conversiones directas USD/EUR
+            // usdData.rates.EUR contiene la tasa: 1 USD = X EUR
             if (!usdData.rates.EUR) {
+                // Si EUR no está en la respuesta, obtenerla desde API EUR
                 const eurResponse = await fetch(`${this.baseUrl}/EUR`);
                 const eurData = await eurResponse.json();
-                this.rates.EUR = eurData.rates.VES;
+                // Calcular tasa USD/EUR desde EUR base: 1 EUR = Y USD, entonces 1 USD = 1/Y EUR
+                this.rates.EUR = 1 / eurData.rates.USD;
             } else {
-                this.rates.EUR = usdData.rates.EUR * usdData.rates.VES;
+                // Almacenar directamente la tasa USD/EUR (1 USD = X EUR)
+                this.rates.EUR = usdData.rates.EUR;
             }
 
             this.updateDisplay();
@@ -81,23 +85,8 @@ class CurrencyConverter {
     }
 
     updateDisplay() {
-        const usdAmount = document.getElementById('usd-amount');
-        const eurAmount = document.getElementById('eur-amount');
-        const usdTime = document.getElementById('usd-time');
-        const eurTime = document.getElementById('eur-time');
-
-        if (usdAmount && this.rates.USD) {
-            usdAmount.textContent = this.formatCurrency(this.rates.USD);
-        }
-
-        if (eurAmount && this.rates.EUR) {
-            eurAmount.textContent = this.formatCurrency(this.rates.EUR);
-        }
-        
-        // Actualizar timestamps
-        const currentTime = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-        if (usdTime) usdTime.textContent = currentTime;
-        if (eurTime) eurTime.textContent = currentTime;
+        // Esta función ya no es necesaria ya que eliminamos la sección "Current Exchange Rates"
+        // Se mantiene vacía para evitar errores si se llama desde otros lugares
     }
 
     formatCurrency(amount) {
