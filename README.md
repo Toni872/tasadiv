@@ -35,11 +35,27 @@
 
 ## 📸 Screenshots
 
-### Desktop - Homepage
+### 🖥️ Vista Desktop (1920x1080)
 ![Vista Desktop](screenshot-desktop.png)
 
-### Mobile - Responsive
+**Características visibles:**
+- ✅ Banner completo con métricas (18 Currencies, <300ms Response Time, 99.9% Uptime)
+- ✅ Panel LATAM con todas las 16 monedas en scroll horizontal
+- ✅ Market Overview: Bitcoin, Ethereum y LATAM Average en tiempo real
+- ✅ Currency Converter bidireccional completo
+- ✅ Diseño profesional dark theme con acentos rojos
+- ✅ Footer con badges profesionales
+
+### 📱 Vista Mobile (375x667 - iPhone SE/8)
 ![Vista Mobile](screenshot-mobile.png)
+
+**Optimizaciones móviles:**
+- ✅ Banner compacto sin métricas (ahorra espacio vertical)
+- ✅ Panel LATAM optimizado con cards más pequeñas
+- ✅ Market Overview en 3 columnas horizontales compactas
+- ✅ Converter con inputs touch-friendly (16px font-size)
+- ✅ **Sin scroll vertical** - Todo visible en una pantalla
+- ✅ Diseño responsive perfecto para móviles pequeños
 
 ---
 
