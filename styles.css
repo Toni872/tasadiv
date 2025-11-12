@@ -93,6 +93,8 @@ header {
     box-shadow: var(--shadow-sm);
     -webkit-tap-highlight-color: transparent; /* Eliminar highlight en móvil */
     touch-action: manipulation; /* Mejorar respuesta táctil */
+    position: relative;
+    z-index: 9999; /* Asegurar que el botón esté por encima */
 }
 
 .lang-button:hover {
