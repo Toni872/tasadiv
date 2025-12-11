@@ -715,6 +715,16 @@ h2 {
     background: rgba(239, 68, 68, 0.1);
 }
 
+.ad-slot {
+    margin: 20px 0 10px 0;
+}
+
+@media (max-width: 1024px) {
+    .ad-slot-desktop {
+        display: none !important;
+    }
+}
+
 .market-label {
     font-size: 9px;
     color: var(--text-muted);
