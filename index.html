@@ -149,11 +149,38 @@
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="pub-9763593418776570"
-                     data-ad-slot="REEMPLAZAR_CON_TU_AD_SLOT"
+                     data-ad-slot="7128919002"
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
                 <script>
                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <script>
+                    // Seguimiento de viewability (GTAG si está disponible)
+                    (function() {
+                        const adEl = document.querySelector('.ad-slot-desktop .adsbygoogle');
+                        if (!adEl || !('IntersectionObserver' in window)) return;
+
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+                                    const ratioPct = Math.round(entry.intersectionRatio * 100);
+                                    if (window.gtag) {
+                                        window.gtag('event', 'ad_viewability', {
+                                            event_category: 'adsense',
+                                            event_label: 'ad-slot-desktop-1',
+                                            value: ratioPct
+                                        });
+                                    } else {
+                                        console.log('[ad_viewability]', 'ad-slot-desktop-1', ratioPct + '%');
+                                    }
+                                    observer.unobserve(adEl);
+                                }
+                            });
+                        }, { threshold: [0.25, 0.5, 0.75, 1] });
+
+                        observer.observe(adEl);
+                    })();
                 </script>
             </section>
 
