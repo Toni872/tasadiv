@@ -1,18 +1,25 @@
 // Service Worker para TasaDiv - Optimización PWA básica
-const CACHE_NAME = 'tasadiv-v1.0.0';
+const CACHE_NAME = 'tasadiv-v1.0.2';
 const STATIC_CACHE_URLS = [
     '/',
     '/index.html',
-    '/styles.css',
+    '/styles.css?v=2.0',
     '/script.js',
-    '/logo.svg'
+    '/logo.svg',
+    '/favicon.ico',
+    '/manifest.json'
 ];
 
 // Instalación del SW
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(STATIC_CACHE_URLS))
+            .then(cache => {
+                return cache.addAll(STATIC_CACHE_URLS).catch(err => {
+                    console.log('Cache addAll failed:', err);
+                    // Continuar aunque falle algún recurso
+                });
+            })
     );
     self.skipWaiting();
 });
@@ -24,8 +31,13 @@ self.addEventListener('activate', event => {
             return Promise.all(
                 cacheNames
                     .filter(cacheName => cacheName !== CACHE_NAME)
-                    .map(cacheName => caches.delete(cacheName))
+                    .map(cacheName => {
+                        console.log('Deleting old cache:', cacheName);
+                        return caches.delete(cacheName);
+                    })
             );
+        }).then(() => {
+            return self.clients.claim();
         })
     );
 });

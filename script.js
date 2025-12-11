@@ -50,18 +50,18 @@ class CurrencyConverter {
                 'SVC': { name: 'Colón Salvadoreño', symbol: '$' }
             };
 
-            // Almacenar todas las tasas a VES
+            // Almacenar todas las tasas por USD (1 USD = X de cada moneda)
             this.rates = {};
             this.latamCurrencies = latamCurrencies;
 
             for (const [code, info] of Object.entries(latamCurrencies)) {
                 if (usdData.rates[code]) {
-                    this.rates[code] = usdData.rates[code] * usdData.rates.VES;
+                    this.rates[code] = usdData.rates[code]; // 1 USD = X (moneda LATAM)
                 }
             }
 
-            // Almacenar tasa USD a VES para conversiones LATAM
-            this.rates.USD = usdData.rates.VES;
+            // Referencia base USD
+            this.rates.USD = 1;
 
             // Almacenar tasa USD a EUR para conversiones directas USD/EUR
             // usdData.rates.EUR contiene la tasa: 1 USD = X EUR
