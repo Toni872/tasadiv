@@ -1,5 +1,5 @@
 // Service Worker para TasaDiv - Optimización PWA básica
-const CACHE_NAME = 'tasadiv-v1.0.3';
+const CACHE_NAME = 'tasadiv-v1.0.4';
 const STATIC_CACHE_URLS = [
     '/',
     '/index.html',
